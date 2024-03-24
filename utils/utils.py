@@ -48,4 +48,4 @@ class C2G_config:
         """
         self.dir = {}
 
-  _C = C2G_config()
+_C = C2G_config()

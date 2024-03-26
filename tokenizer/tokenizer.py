@@ -72,15 +72,12 @@ class MultiLanguageTokenizer:
             vocab_size (int, optional): Vocabulary size for the tokenizer.
                                         Default is 90.
         """
-        spm.SentencePieceTrainer.train(input=file_location, 
-                               model_prefix=model_prefix, 
-                               vocab_size=vocab_size, 
-                               model_type='vocab')
-
+        
+        spm.SentencePieceTrainer.train(input=file_location, model_prefix=model_prefix, vocab_size=vocab_size)
 
         model_path = model_prefix + '.model'
         self.tokenizer.load(model_path)
-        os.remove(model_path)  # Removing the temporary model file after loading
+        #os.remove(model_path)  # Removing the temporary model file after loading
 
     def tokenize_sentences(self, sentences):
         """

@@ -52,6 +52,18 @@ class MultiLanguageTokenizer:
         >>> print("Decoded sentences:", decoded_sentences)
         Decoded sentences: ['Hello, how are you?', 'नमस्ते, आप कैसे हैं?', '你好，你好吗？', 'Bonjour, comment ça va?']
         ```
+    Example for the use in GPT Model training:
+        ```
+        >>> tokenizer = MultiLanguageTokenizer()
+        >>> tokenizer.train_tokenizer_from_file('./corpus.txt')
+        >>> tokenizer.tokenize_file('./corpus.txt', './corpus_tokenized.txt')
+        
+        >>> file_list = ['./corpus_tokenized.txt']
+        >>> tokenizer.add_newlines_to_files(file_list, 16)
+
+        >>> data = tokenizer.prepare_gpt_training_data('./corput_tokenized.txt')
+        >>> inputs, outputs = keras.ops.convert_to_tensor(data[0]), keras.ops.convert_to_tensor(data[1])
+        ```
     """
 
     def __init__(self):

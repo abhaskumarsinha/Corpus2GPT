@@ -48,7 +48,7 @@ class Attention(keras.layers.Layer):
         self.norm = keras.layers.LayerNormalization(-1)
         self.dropout = keras.layers.Dropout(self.dropout)
 
-        self.q_norm_factor = 1/np.sqrt(self.num_heads * self.num_dims)
+        self.q_norm_factor = 1/np.sqrt(self.num_heads * self.head_dims)
 
     def generate_mask(self, num_words):
         """

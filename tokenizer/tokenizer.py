@@ -113,7 +113,7 @@ class MultiLanguageTokenizer:
             decoded_sentences.append(decoded_sentence)
         return decoded_sentences
 
-    def add_newlines_to_files(file_list, max_line_length):
+    def add_newlines_to_files(self, file_list, max_line_length):
         """
         Scans a list of text files and adds newline characters to keep all lines shorter than a specified limit.
 

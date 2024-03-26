@@ -28,7 +28,7 @@ class Decoder(keras.layers.Layer):
         self.norm2 = keras.layers.LayerNormalization(-1)
 
         # Attention mechanism
-        self.attn = Attention()
+        self.attn = attention()
 
         # Dense layer for the first feed-forward sub-layer
         self.fc1 = keras.layers.Dense(self.attn.num_heads * self.attn.head_dims * 5)

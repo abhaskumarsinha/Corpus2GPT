@@ -194,8 +194,8 @@ class MultiLanguageTokenizer:
         input_pairs = []
         output_pairs = []
         for tokens in tokenized_sentences:
-            input_tokens = tokens[2:-1]
-            output_tokens = tokens[1:-2]
+            input_tokens = tokens[1:-3]
+            output_tokens = tokens[2:-2] 
             input_sentence = self.tokenizer.decode(input_tokens)
             output_sentence = self.tokenizer.decode(output_tokens)
             input_pairs.append([input_sentence])

@@ -45,7 +45,7 @@ class Attention(keras.layers.Layer):
         self.query = keras.layers.Dense(self.dense_units)
         self.value = keras.layers.Dense(self.dense_units)
         self.out = keras.layers.Dense(self.dense_units)
-        self.norm = keras.layers.Normalization(-1)
+        self.norm = keras.layers.LayerNormalization(-1)
         self.dropout = keras.layers.Dropout(self.dropout)
 
     def generate_mask(self, num_words):
@@ -129,11 +129,8 @@ class Attention(keras.layers.Layer):
         kq = keras.ops.softmax(kq, -1)
         kqv = keras.ops.einsum('bijk, bjkl -> bijl', kq, v)
         kqv = keras.ops.reshape(kqv, (bsz, num_words, -1))
-        try:
-            kqv = self.norm(kqv)
-            kqv = self.dropout(kqv)
-        except:
-            pass
+        kqv = self.norm(kqv)
+        kqv = self.dropout(kqv)
         kqv = self.out(kqv)
 
         return kqv, cache

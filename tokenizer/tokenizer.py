@@ -208,3 +208,35 @@ class MultiLanguageTokenizer:
             output_pairs.append([output_pairs]
 
         return input_pairs, output_pairs
+
+    def tokenize_file(self, file_location):
+        """
+        Tokenizes the content of the specified text file.
+
+        Args:
+            file_location (str): Path to the text file to be tokenized.
+
+        Returns:
+            list of list of str: List of tokenized sentences, where each sentence is represented as a list of tokens.
+
+        Example usage:
+            Suppose we have a text file 'example.txt' with the following content:
+
+            This is an example sentence.
+            Another sentence for testing.
+
+            >>> tokenizer = MultiLanguageTokenizer()
+            >>> tokenizer.train_tokenizer_from_file("example.txt")
+            >>> tokenized_content = tokenizer.tokenize_file("example.txt")
+            >>> for sentence_tokens in tokenized_content:
+            ...     print(sentence_tokens)
+
+            Output:
+            ['▁This', '▁is', '▁an', '▁example', '▁sentence', '.']
+            ['▁Another', '▁sentence', '▁for', '▁testing', '.']
+        """
+        with open(file_location, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+
+        tokenized_content = self.tokenize_sentences(lines)
+        return tokenized_content

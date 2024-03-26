@@ -16,10 +16,10 @@ class SharedEmbedding(keras.layers.Layer):
         instance with shared parameters.
     """
 
-    def __init__(self):
+    def __init__(self, vocab, embedding_size):
         """Initializes the SharedEmbedding layer."""
         super().__init__()
-        self.embedding = keras.layers.Embedding(8008, 1280)
+        self.embedding = keras.layers.Embedding(vocab, embedding_size)
 
     def call(self, inputs):
         """
@@ -48,10 +48,10 @@ class PositionalEmbedding(keras.layers.Layer):
         for positional embeddings.
     """
 
-    def __init__(self):
+    def __init__(self, seq_len, embedding_size):
         """Initializes the PositionalEmbedding layer."""
         super().__init__()
-        self.embedding = keras.layers.Embedding(128, 1280)
+        self.embedding = keras.layers.Embedding(seq_len, embedding_size)
 
     def call(self, inputs, length=0):
         """

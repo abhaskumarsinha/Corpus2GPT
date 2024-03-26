@@ -1,5 +1,4 @@
 import keras
-from attention import Attention
 
 class Decoder(keras.layers.Layer):
     """
@@ -12,11 +11,12 @@ class Decoder(keras.layers.Layer):
         dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
     """
 
-    def __init__(self, dropout_rate=0.2):
+    def __init__(self, attention, dropout_rate=0.2):
         """
         Initializes the Decoder layer.
 
         Args:
+            attention (keras.layers.Layer): Attention layer for attention.
             dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
         """
         super().__init__()

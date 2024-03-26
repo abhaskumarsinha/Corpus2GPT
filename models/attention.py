@@ -48,6 +48,8 @@ class Attention(keras.layers.Layer):
         self.norm = keras.layers.LayerNormalization(-1)
         self.dropout = keras.layers.Dropout(self.dropout)
 
+        self.q_norm_factor = 1/np.sqrt(self.num_heads * self.num_dims)
+
     def generate_mask(self, num_words):
         """
         Generates a triangular mask to be applied 
@@ -111,6 +113,7 @@ class Attention(keras.layers.Layer):
         cache = (k, q, v)
 
         kq = keras.ops.einsum('bijk, bilk -> bij', k, q)
+        kq *= self.q_norm_factor
 
         num_words = keras.ops.shape(kq)[-1]
         bsz = keras.ops.shape(kq)[0]

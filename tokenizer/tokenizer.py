@@ -127,3 +127,84 @@ class MultiLanguageTokenizer:
             decoded_sentence = self.tokenizer.decode(token_list)
             decoded_sentences.append(decoded_sentence)
         return decoded_sentences
+
+    def add_newlines_to_files(file_list, max_line_length):
+        """
+        Scans a list of text files and adds newline characters to keep all lines shorter than a specified limit.
+
+        Args:
+            file_list (list of str): List of file paths to be scanned.
+            max_line_length (int): Maximum allowed length for each line.
+
+        Example:
+            ```
+            >>> file_list = ['file1.txt', 'file2.txt']
+            >>> max_line_length = 50
+            >>> add_newlines_to_files(file_list, max_line_length)
+            ```
+
+        Returns:
+            None
+        """
+        for file_path in file_list:
+            with open(file_path, 'r', encoding='utf-8') as file:
+                lines = file.readlines()
+
+            with open(file_path, 'w', encoding='utf-8') as file:
+                for line in lines:
+                    while len(line) > max_line_length:
+                        index = line.rfind(' ', 0, max_line_length)
+                        if index == -1:
+                            break
+                        file.write(line[:index + 1] + '\n')
+                        line = line[index + 1:]
+                    file.write(line)
+
+
+
+    def prepare_gpt_training_data(self, file_location):
+        """
+        Prepares input-output pairs for training a GPT model 
+        using the specified text file.
+
+        Args:
+            file_location (str): Path to the text file containing training data.
+
+        Returns:
+            list of tuple of str: List of tuples, where each tuple contains an 
+            input sequence and its corresponding output sequence.
+
+        Example usage:
+            Suppose we have a text file 'training_data.txt' with the following content:
+
+            ```
+            Hello World, How are you?
+            I hope you are doing fine.
+
+            >>> tokenizer = MultiLanguageTokenizer()
+            >>> tokenizer.train_tokenizer_from_file("training_data.txt")
+            >>> training_data = tokenizer.prepare_gpt_training_data("training_data.txt")
+            >>> for pair in training_data:
+            ...     print(pair)
+
+            Output:
+            ('Hello World, How are', 'I hope you are doing fine.')
+            ('World, How are you?', 'hope you are doing fine.')
+            ```
+        """
+        with open(file_location, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+
+        tokenized_sentences = self.tokenize_sentences(lines)
+        
+        input_pairs = []
+        output_pairs = []
+        for tokens in tokenized_sentences:
+            input_tokens = tokens[:-1]
+            output_tokens = tokens[1:]
+            input_sentence = self.tokenizer.decode(input_tokens)
+            output_sentence = self.tokenizer.decode(output_tokens)
+            input_pairs.append([input_tokens])
+            output_pairs.append([output_pairs]
+
+        return input_pairs, output_pairs

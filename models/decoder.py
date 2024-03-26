@@ -8,6 +8,7 @@ class Decoder(keras.layers.Layer):
     the output sequence based on the encoded input sequence and previously generated output tokens.
 
     Parameters:
+        attention (keras.layers.Layer): Attention layer for the decoder.
         dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
     """
 
@@ -16,7 +17,7 @@ class Decoder(keras.layers.Layer):
         Initializes the Decoder layer.
 
         Args:
-            attention (keras.layers.Layer): Attention layer for attention.
+            attention (keras.layers.Layer): Attention layer for the decoder.
             dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
         """
         super().__init__()

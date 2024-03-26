@@ -12,41 +12,26 @@ class MultiLanguageTokenizer:
 
     Methods:
         __init__():
-            Initializes the MultiLanguageTokenizer object and 
-            creates a SentencePiece tokenizer instance.
+            Initializes the MultiLanguageTokenizer object and creates a SentencePiece tokenizer instance.
 
-        `train_tokenizer_from_file(file_location, model_prefix='tokenizer', vocab_size=90):`
+        train_tokenizer_from_file(file_location, model_prefix='tokenizer', vocab_size=90):
             Trains the tokenizer using the input file and loads the trained model.
-            
-            Args:
-                file_location (str): Path to the text file used for training.
-                model_prefix (str, optional): Prefix for the model files generated 
-                                              during training. Default is 'tokenizer'.
-                vocab_size (int, optional): Vocabulary size for the tokenizer. 
-                                            Default is 90.
 
         tokenize_sentences(sentences):
             Tokenizes a list of sentences.
-            
-            Args:
-                sentences (list of str): List of sentences to be tokenized.
-
-            Returns:
-                list of lists of str: List of tokenized sentences, where each 
-                sentence is represented as a list of tokens.
 
         decode_tokens(token_lists):
-            Decodes a list of tokenized sentences back to human-readable 
-            sentences.
-            
-            Args:
-                token_lists (list of lists of str): List of tokenized sentences, 
-                                                    where each sentence is represented 
-                                                    as a list of tokens.
+            Decodes a list of tokenized sentences back to human-readable sentences.
 
-            Returns:
-                list of str: List of decoded sentences.
-    
+        add_newlines_to_files(file_list, max_line_length):
+            Scans a list of text files and adds newline characters to maintain line length.
+
+        prepare_gpt_training_data(file_location):
+            Prepares input-output pairs for training a GPT model using the specified text file.
+
+        tokenize_file(file_location, output_file_location):
+            Tokenizes the content of the specified text file and saves the tokenized content to another file.
+  
     Examples:
         ```
         >>> tokenizer = MultiLanguageTokenizer()

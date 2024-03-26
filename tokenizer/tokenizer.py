@@ -189,8 +189,8 @@ class MultiLanguageTokenizer:
             output_tokens = tokens[1:]
             input_sentence = self.tokenizer.decode(input_tokens)
             output_sentence = self.tokenizer.decode(output_tokens)
-            input_pairs.append([input_tokens])
-            output_pairs.append([output_pairs])
+            input_pairs.append([input_sentence])
+            output_pairs.append([output_sentence])
 
         return input_pairs, output_pairs
 

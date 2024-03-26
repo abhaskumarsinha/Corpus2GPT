@@ -80,7 +80,7 @@ class MultiLanguageTokenizer:
         sp = spm.SentencePieceProcessor(model_file=model_path)
         self.vocabs = [sp.id_to_piece(id) for id in range(sp.get_piece_size())]
 
-        self.vocab_dict = {token: i for i, token in enumerate(vocab_list)}
+        self.vocab_dict = {token: i for i, token in enumerate(self.vocabs)}
 
         # Creating inverse vocab dictionary (integer to token)
         self.inverse_vocab = {i: token for token, i in vocab_dict.items()}

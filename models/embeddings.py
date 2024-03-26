@@ -66,7 +66,7 @@ class PositionalEmbedding(keras.layers.Layer):
             Tensor: Embedded representation of input tokens 
                     with positional encodings added.
         """
-        bsz, seq_len = inputs[:2]
+        bsz, seq_len = keras.ops.shape(inputs)[:2]
 
         ones = keras.ops.ones((bsz, seq_len))
         seq = keras.ops.reshape(keras.ops.arange(length, length + seq_len), (1, seq_len))

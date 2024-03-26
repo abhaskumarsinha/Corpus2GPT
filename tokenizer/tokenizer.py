@@ -222,4 +222,3 @@ class MultiLanguageTokenizer:
                 output_file.write(' '.join(sentence_tokens) + '\n')
 
         tokenized_content = self.tokenize_sentences(lines)
-        return tokenized_content

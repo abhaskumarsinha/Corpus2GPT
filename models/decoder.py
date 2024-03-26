@@ -1,3 +1,6 @@
+import keras
+from attention import Attention
+
 class Decoder(keras.layers.Layer):
     """
     Decoder layer in a Transformer model architecture.

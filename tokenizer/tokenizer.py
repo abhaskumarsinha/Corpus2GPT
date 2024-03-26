@@ -83,7 +83,7 @@ class MultiLanguageTokenizer:
         self.vocab_dict = {token: i for i, token in enumerate(self.vocabs)}
 
         # Creating inverse vocab dictionary (integer to token)
-        self.inverse_vocab = {i: token for token, i in vocab_dict.items()}
+        self.inverse_vocab = {i: token for token, i in self.vocab_dict.items()}
 
         #os.remove(model_path)  # Removing the temporary model file after loading
 

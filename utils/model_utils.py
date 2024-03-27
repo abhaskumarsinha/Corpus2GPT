@@ -88,3 +88,44 @@ class C2GModelBase:
         """
         self.delete_model()
         _C.dir[str(self.BASE_LABEL)].update(**config)
+
+    @classmethod
+    def serialize(cls, instance):
+    """
+    Serialize the instance and its nested BaseModel instances into a dictionary.
+
+    Args:
+        instance (BaseModel): The instance to be serialized.
+
+    Returns:
+        dict: A dictionary containing the serialized data.
+
+    Example:
+        Consider a BaseModel instance 'base_instance' with nested instances:
+        
+        sub_instance = SubModel(sub_param="abc")
+        base_instance = BaseModel(sub_model=sub_instance)
+
+        serialized_data = BaseModel.serialize(base_instance)
+        print(serialized_data)
+        
+        Output:
+        {
+            '_config': {
+                'sub_model': {
+                    '_config': {'sub_param': 'abc'}
+                }
+            }
+        }
+    """
+        if isinstance(instance, cls):
+            config_dict = {}
+            for key, value in instance._config.items():
+                if isinstance(value, BaseModel):
+                    config_dict[key] = cls.serialize(value)
+                else:
+                    config_dict[key] = value
+            return config_dict
+        else:
+            raise ValueError("Instance must be an instance of BaseModel or its subclass.")
+

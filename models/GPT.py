@@ -52,7 +52,7 @@ class GPT(keras.layers.Layer, C2GModelBase):
 
         self.lm_head = keras.layers.Dense(vocab_size)
 
-        self._config = {'decoder' : decoder, 'embeddings': embeddings, 'pos_embeddings': pos_embeddings, 'embedding_size': embedding_size, 'vocab_size': vocab_size, 'input_len': input_len, 'num_decoders': num_decoders}
+        self._config = {'decoder' : decoder, 'attention': attention, 'embeddings': embeddings, 'pos_embeddings': pos_embeddings, 'embedding_size': embedding_size, 'vocab_size': vocab_size, 'input_len': input_len, 'num_decoders': num_decoders}
 
 
     def call(self, inputs):

@@ -118,8 +118,8 @@ class Attention(keras.layers.Layer, C2GModelBase):
         kq = keras.ops.einsum('bijk, bilk -> bij', k, q)
         kq *= self.q_norm_factor
 
-        num_words = keras.ops.shape(kq)[-1]
-        #num_words = 64
+        #num_words = keras.ops.shape(kq)[-1]
+        num_words = 64
         bsz = keras.ops.shape(kq)[0]
 
         kq = keras.ops.reshape(kq, (bsz, 1, -1, num_words))

@@ -1,6 +1,7 @@
 import keras
+from utils import C2GModelBase
 
-class Decoder(keras.layers.Layer):
+class Decoder(keras.layers.Layer, C2GModelBase):
     """
     Decoder layer in a Transformer model architecture.
 
@@ -40,6 +41,8 @@ class Decoder(keras.layers.Layer):
         # Dropout layers
         self.dropout1 = keras.layers.Dropout(dropout_rate)
         self.dropout2 = keras.layers.Dropout(dropout_rate)
+        
+        self._config = {'attention': attention, 'dropout_rate': dropout_rate}
 
     def call(self, inputs):
         """

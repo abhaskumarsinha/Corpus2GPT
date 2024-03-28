@@ -1,5 +1,6 @@
 import keras
 from utils import C2GModelBase
+from model.attention import Attention
 
 class Decoder(keras.layers.Layer, C2GModelBase):
     """
@@ -13,7 +14,7 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
     """
 
-    def __init__(self, attention, dropout_rate=0.2, num_heads = 32, head_dims = 40, fc_dim_factor = 5):
+    def __init__(self, dropout_rate=0.2, num_heads = 32, head_dims = 40, fc_dim_factor = 5):
         """
         Initializes the Decoder layer.
 
@@ -30,7 +31,7 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         self.norm2 = keras.layers.LayerNormalization(-1)
 
         # Attention mechanism
-        self.attn = attention(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate)
+        self.attn = Attention(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate)
 
         # Dense layer for the first feed-forward sub-layer
         self.fc1 = keras.layers.Dense(self.attn.num_heads * self.attn.head_dims * fc_dim_factor)

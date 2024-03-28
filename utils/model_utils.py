@@ -129,7 +129,7 @@ class C2GModelBase:
                     config_dict[key] = cls.serialize(value)
                 else:
                     config_dict[key] = value
-            return config_dict
+            _C._dir = cls.add_class_name(config_dict)
         else:
             raise ValueError("Instance must be an instance of BaseModel or its subclass.")
 

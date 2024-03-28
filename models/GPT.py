@@ -45,7 +45,7 @@ class GPT(keras.layers.Layer, C2GModelBase):
         self.num_decoders = num_decoders
         self.decoders = []
         for _ in range(self.num_decoders):
-            self.decoders.append(decoder(dropout_rate, num_heads, head_dims, fc_dim_factor))
+            self.decoders.append(decoder(dropout_rate, num_heads, head_dims, fc_dim_factor, input_len = input_len))
         
         self.embeddings = embeddings(vocab_size, embedding_size)
         self.pos_embeddings = pos_embeddings(input_len, embedding_size)

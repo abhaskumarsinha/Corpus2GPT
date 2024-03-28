@@ -278,7 +278,7 @@ class AttentionTrain(keras.layers.Layer, C2GModelBase):
         kq = keras.ops.softmax(kq, -1)
         kqv = keras.ops.einsum('bijk, bjkl -> bijl', kq, v)
         kqv = keras.ops.reshape(kqv, (bsz, num_words, -1))
-        kqv = self.norm(kqv)
+        #kqv = self.norm(kqv)
         kqv = self.dropout(kqv)
         kqv = self.out(kqv)
 

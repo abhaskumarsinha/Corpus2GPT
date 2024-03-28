@@ -206,7 +206,6 @@ class AttentionTrain(keras.layers.Layer, C2GModelBase):
         self.query = keras.layers.Dense(self.dense_units)
         self.value = keras.layers.Dense(self.dense_units)
         self.out = keras.layers.Dense(self.dense_units)
-        self.norm = keras.layers.LayerNormalization(-1)
         self.dropout = keras.layers.Dropout(self.dropout)
 
         self.q_norm_factor = 1/np.sqrt(self.num_heads * self.head_dims)
@@ -278,7 +277,6 @@ class AttentionTrain(keras.layers.Layer, C2GModelBase):
         kq = keras.ops.softmax(kq, -1)
         kqv = keras.ops.einsum('bijk, bjkl -> bijl', kq, v)
         kqv = keras.ops.reshape(kqv, (bsz, num_words, -1))
-        #kqv = self.norm(kqv)
         kqv = self.dropout(kqv)
         kqv = self.out(kqv)
 

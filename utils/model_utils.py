@@ -46,8 +46,8 @@ class C2GModelBase:
         self.restore_default_model(DEFAULT_CONFIGS)
 
     def debug(self):
-        print(self._C.get_dir())
-        print(self._C.get_version())
+        print(_C.get_dir())
+        print(_C.get_version())
 
     def restore_default_model(self, cfg):
         """

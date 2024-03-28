@@ -1,8 +1,9 @@
 import keras
 import numpy as np
+from utils import C2GModelBase
 
 
-class Attention(keras.layers.Layer):
+class Attention(keras.layers.Layer, C2GModelBase):
     """
     Multihead attention layer.
 
@@ -49,6 +50,8 @@ class Attention(keras.layers.Layer):
         self.dropout = keras.layers.Dropout(self.dropout)
 
         self.q_norm_factor = 1/np.sqrt(self.num_heads * self.head_dims)
+
+        self._config = {'head_dims': head_dims, 'num_heads': num_heads, 'dropout': dropout}
 
     def generate_mask(self, num_words):
         """

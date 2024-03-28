@@ -1,6 +1,7 @@
 import keras
+from utils import C2GModelBase
 
-class GPT(keras.layers.Layer):
+class GPT(keras.layers.Layer, C2GModelBase):
     """
     GPT (Generative Pre-trained Transformer) layer.
 
@@ -50,6 +51,10 @@ class GPT(keras.layers.Layer):
         self.pos_embeddings = pos_embeddings(input_len, embedding_size)
 
         self.lm_head = keras.layers.Dense(vocab_size)
+
+        self._config = {'decoders': self.decoders, 'num_decoders': self.num_decoders, 'embeddings': 'self.embeddings', 'pos_embeddings': self.pos_embeddings, 'lm_head': self.lm_head}
+
+        
 
     def call(self, inputs):
         """

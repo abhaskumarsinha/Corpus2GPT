@@ -73,6 +73,11 @@ class MultiLanguageTokenizer(C2GModelBase):
         tokenizer instance.
         """
         self.tokenizer = spm.SentencePieceProcessor()
+        
+    @classmethod
+    def add_class_name(cls, _config):
+        return {cls.__name__ : _config}
+        
 
     def train_tokenizer_from_file(self, file_location, model_prefix='tokenizer', vocab_size=90):
         """
@@ -104,10 +109,7 @@ class MultiLanguageTokenizer(C2GModelBase):
                         'vocab_dict' : self.vocab_dict,
                         'inverse_vocab' : self.inverse_vocab}
         self._config = add_class_name(self._config)
-    
-    @classmethod
-    def add_class_name(cls, _config):
-        return {cls.__name__ : _config}
+
 
     def tokenize_sentences(self, sentences):
         """

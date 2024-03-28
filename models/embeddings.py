@@ -1,8 +1,9 @@
 import math
 import keras
 import numpy as np
+from utils import C2GModelBase
 
-class SharedEmbedding(keras.layers.Layer):
+class SharedEmbedding(keras.layers.Layer, C2GModelBase):
     """
     SharedEmbedding layer for providing embeddings of tokens.
 
@@ -30,6 +31,8 @@ class SharedEmbedding(keras.layers.Layer):
         """
         super().__init__()
         self.embedding = keras.layers.Embedding(vocab, embedding_size)
+
+        self._config = {'vocab': vocab, 'embedding_size': embedding_size}
 
     def call(self, inputs):
         """
@@ -72,6 +75,8 @@ class PositionalEmbedding(keras.layers.Layer):
         """
         super().__init__()
         self.embedding = keras.layers.Embedding(seq_len, embedding_size)
+
+        self._config = {'seq_len': seq_len, 'embedding_size': embedding_size}
 
     def call(self, inputs, length=0):
         """

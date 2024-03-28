@@ -90,6 +90,10 @@ class C2GModelBase:
         _C.dir[str(self.BASE_LABEL)].update(**config)
 
     @classmethod
+    def add_class_name(cls, _config):
+        return {cls.__name__ : _config}
+
+    @classmethod
     def serialize(cls, instance):
         """
         Serialize the instance and its nested BaseModel instances into a dictionary.

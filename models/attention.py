@@ -273,7 +273,7 @@ class AttentionTrain(keras.layers.Layer, C2GModelBase):
             kq = keras.ops.append(kq, kq_copy, 1)
 
         kq = keras.ops.transpose(kq, (0, 2, 1, 3))
-        kq = kq - mask_tensor
+        kq = kq - self.mask_tensor
         kq = keras.ops.transpose(kq, (0, 2, 1, 3))
         kq = keras.ops.softmax(kq, -1)
         kqv = keras.ops.einsum('bijk, bjkl -> bijl', kq, v)

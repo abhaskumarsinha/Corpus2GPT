@@ -74,9 +74,9 @@ class MultiLanguageTokenizer(C2GModelBase):
         """
         self.tokenizer = spm.SentencePieceProcessor()
         
-    @classmethod
-    def add_class_name(cls, _config):
-        return {cls.__name__ : _config}
+    #@classmethod
+    #def add_class_name(cls, _config):
+    #    return {cls.__name__ : _config}
         
 
     def train_tokenizer_from_file(self, file_location, model_prefix='tokenizer', vocab_size=90):

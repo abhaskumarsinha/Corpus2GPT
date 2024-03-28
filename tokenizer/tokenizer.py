@@ -1,6 +1,6 @@
 import sentencepiece as spm
 import os
-from ..utils import C2GModelBase
+from ...utils import C2GModelBase
 
 class MultiLanguageTokenizer(C2GModelBase):
     """

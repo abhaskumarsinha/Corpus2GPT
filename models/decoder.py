@@ -43,7 +43,7 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         self.dropout1 = keras.layers.Dropout(dropout_rate)
         self.dropout2 = keras.layers.Dropout(dropout_rate)
         
-        self._config = {'attention': attention, 'dropout_rate': dropout_rate}
+        self._config = {'dropout_rate': dropout_rate}
 
     def call(self, inputs):
         """

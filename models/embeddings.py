@@ -93,8 +93,8 @@ class PositionalEmbedding(keras.layers.Layer):
         """
         bsz, seq_len = keras.backend.shape(inputs)[:2]
 
-        ones = keras.backend.ones((bsz, seq_len))
-        seq = keras.backend.reshape(keras.backend.arange(length, length + seq_len), (1, seq_len))
+        ones = keras.ops.ones((bsz, seq_len))
+        seq = keras.ops.reshape(keras.backend.arange(length, length + seq_len), (1, seq_len))
 
         y = self.embedding(keras.backend.einsum('bi, xi -> bi', ones, seq))
 

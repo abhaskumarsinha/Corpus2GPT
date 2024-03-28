@@ -25,7 +25,7 @@ class Attention(keras.layers.Layer, C2GModelBase):
     ```
     """
 
-    def __init__(self, head_dims=40, num_heads=32, dropout=0.2, num_words = 128):
+    def __init__(self, head_dims=40, num_heads=32, dropout=0.2):
         """
         Initializes the multihead attention layer.
 
@@ -41,7 +41,6 @@ class Attention(keras.layers.Layer, C2GModelBase):
         self.num_heads = num_heads
         self.dropout = dropout
         self.dense_units = self.head_dims * self.num_heads
-        self.num_words = num_words
 
         self.key = keras.layers.Dense(self.dense_units)
         self.query = keras.layers.Dense(self.dense_units)
@@ -126,12 +125,8 @@ class Attention(keras.layers.Layer, C2GModelBase):
 
         kq_copy = keras.ops.copy(kq)
 
-        try:
-            for counter in range(num_words - 1):
-                kq = keras.ops.append(kq, kq_copy, 1)
-        except:
-            for counter in range(self.num_words - 1):
-                kq = keras.ops.append(kq, kq_copy, 1)
+        for counter in range(num_words - 1):
+            kq = keras.ops.append(kq, kq_copy, 1)
 
         mask = self.generate_mask(num_words)
         kq = keras.ops.transpose(kq, (0, 2, 1, 3))

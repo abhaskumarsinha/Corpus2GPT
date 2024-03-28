@@ -1,2 +1,2 @@
-from utils import _C
-from model_utils import C2GModelBase
+from utils.utils import _C
+from utils.model_utils import C2GModelBase

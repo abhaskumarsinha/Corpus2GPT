@@ -1,7 +1,8 @@
 import sentencepiece as spm
 import os
+from ..utils import C2GModelBase
 
-class MultiLanguageTokenizer:
+class MultiLanguageTokenizer(C2GModelBase):
     """
     A class for tokenizing multilingual text using the SentencePiece 
     algorithm.
@@ -97,7 +98,11 @@ class MultiLanguageTokenizer:
         # Creating inverse vocab dictionary (integer to token)
         self.inverse_vocab = {i: token for token, i in self.vocab_dict.items()}
 
-        #os.remove(model_path)  # Removing the temporary model file after loading
+        self._config = {'model_path' : model_path,
+                        'model_file' : model_path,
+                        'vocabs' : self.vocabs,
+                        'vocab_dict' : self.vocab_dict,
+                        'inverse_vocab' : self.inverse_vocab}
 
     def tokenize_sentences(self, sentences):
         """

@@ -1,6 +1,6 @@
 import keras
 from utils import C2GModelBase
-from model.attention import Attention
+from models.attention import Attention
 
 class Decoder(keras.layers.Layer, C2GModelBase):
     """

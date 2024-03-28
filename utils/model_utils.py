@@ -125,7 +125,7 @@ class C2GModelBase:
         if isinstance(instance, cls):
             config_dict = {}
             for key, value in instance._config.items():
-                if isinstance(value, self):
+                if isinstance(value, cls):
                     config_dict[key] = cls.serialize(value)
                 else:
                     config_dict[key] = value

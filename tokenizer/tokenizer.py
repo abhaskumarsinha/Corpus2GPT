@@ -103,6 +103,11 @@ class MultiLanguageTokenizer(C2GModelBase):
                         'vocabs' : self.vocabs,
                         'vocab_dict' : self.vocab_dict,
                         'inverse_vocab' : self.inverse_vocab}
+        self._config = add_class_name(self._config)
+    
+    @classmethod
+    def add_class_name(cls, _config):
+        return {cls.__name__ : _config}
 
     def tokenize_sentences(self, sentences):
         """

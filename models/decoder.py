@@ -63,7 +63,7 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         x = self.norm1(x)
         x = self.dropout1(x)
         #x, _ = self.attn((x, x, x))  # Multi-head self-attention mechanism
-        x, _ = self.attn(x, x, x, use_causal_mask = True)
+        x = self.attn(x, x, x, use_causal_mask = True)
         x += residual  # Add residual connection
 
         residual = x

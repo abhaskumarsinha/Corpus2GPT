@@ -31,7 +31,8 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         self.norm2 = keras.layers.LayerNormalization(-1)
 
         # Attention mechanism
-        self.attn = AttentionTrain(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate, input_len = input_len)
+        #self.attn = AttentionTrain(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate, input_len = input_len)
+        self.attn = keras.layers.MultiHeadAttention(32, 40)
 
         # Dense layer for the first feed-forward sub-layer
         self.fc1 = keras.layers.Dense(self.attn.num_heads * self.attn.head_dims * fc_dim_factor)
@@ -61,7 +62,8 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         # First sub-layer: Multi-head Self-Attention
         x = self.norm1(x)
         x = self.dropout1(x)
-        x, _ = self.attn((x, x, x))  # Multi-head self-attention mechanism
+        #x, _ = self.attn((x, x, x))  # Multi-head self-attention mechanism
+        x, _ = self.attn(x, x, x, use_causal_mask = True)
         x += residual  # Add residual connection
 
         residual = x

@@ -59,19 +59,16 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         residual = x
 
         # First sub-layer: Multi-head Self-Attention
-        x = self.norm1(x)
-        x = self.dropout1(x)
         x = self.attn(x)
-        x += residual  # Add residual connection
+        x = self.dropout1(x)
+        x = self.norm1(x + residual)
 
-        residual = x
+        residual2 = x
 
         # Second sub-layer: Feed-forward Neural Network
-        x = self.norm2(x)
-        x = self.dropout2(x)
         x = self.fc1(x)  # First feed-forward layer
         x = self.fc2(x)  # Second feed-forward layer
-
-        x += residual  # Add residual connection
+        x = self.dropout2(x)
+        x = self.norm2(x + residual2)
 
         return x

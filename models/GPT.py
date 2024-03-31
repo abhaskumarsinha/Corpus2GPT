@@ -68,7 +68,7 @@ class GPT(keras.layers.Layer, C2GModelBase):
         x = inputs
 
         x = self.embeddings(x)
-        x = self.pos_embeddings(x)
+        x = self.pos_embeddings(x) + x
 
         for decoder in self.decoders:
             x = decoder(x)

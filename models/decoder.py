@@ -25,10 +25,10 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         super().__init__()
 
         # Layer Normalization for the first sub-layer
-        self.norm1 = keras.layers.LayerNormalization(epsilon=1e-6))
+        self.norm1 = keras.layers.LayerNormalization(epsilon=1e-6)
 
         # Layer Normalization for the second sub-layer
-        self.norm2 = keras.layers.LayerNormalization(epsilon=1e-6))
+        self.norm2 = keras.layers.LayerNormalization(epsilon=1e-6)
 
         # Attention mechanism
         self.attn = AttentionTrain(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate, input_len = input_len)

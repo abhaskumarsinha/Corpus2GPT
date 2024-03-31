@@ -34,10 +34,10 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         self.attn = AttentionTrain(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate, input_len = input_len)
 
         # Dense layer for the first feed-forward sub-layer
-        self.fc1 = keras.layers.Dense(num_heads * head_dims * fc_dim_factor)
+        self.fc1 = keras.layers.Dense(num_heads * head_dims * fc_dim_factor, activation='gelu')
 
         # Dense layer for the second feed-forward sub-layer
-        self.fc2 = keras.layers.Dense(num_heads * head_dims)
+        self.fc2 = keras.layers.Dense(num_heads * head_dims, activation='gelu')
 
         # Dropout layers
         self.dropout1 = keras.layers.Dropout(dropout_rate)

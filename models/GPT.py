@@ -50,7 +50,7 @@ class GPT(keras.layers.Layer, C2GModelBase):
         self.embeddings = embeddings(vocab_size, embedding_size)
         self.pos_embeddings = pos_embeddings(input_len, embedding_size)
 
-        self.lm_head = keras.layers.Dense(vocab_size)
+        self.lm_head = keras.layers.Dense(vocab_size, activation='softmax')
 
         self._config = {'decoder' : decoder, 'embeddings': embeddings, 'pos_embeddings': pos_embeddings, 'embedding_size': embedding_size, 'vocab_size': vocab_size, 'input_len': input_len, 'num_decoders': num_decoders}
 

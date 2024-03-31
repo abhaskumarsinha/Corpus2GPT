@@ -26,7 +26,7 @@ class GPT(keras.layers.Layer, C2GModelBase):
         lm_head (keras.layers.Dense): Dense layer for language modeling.
     """
 
-    def __init__(self, decoder, embeddings, pos_embeddings, embedding_size=1280, vocab_size=8008, input_len=64, num_decoders=10, dropout_rate=0.2, num_heads = 32, head_dims = 40, fc_dim_factor = 5):
+    def __init__(self, decoder, embeddings, pos_embeddings, embedding_size=1280, vocab_size=8008, input_len=64, num_decoders=5, dropout_rate=0.1, num_heads = 32, head_dims = 40, fc_dim_factor = 5):
         """
         Initializes the GPT layer.
 

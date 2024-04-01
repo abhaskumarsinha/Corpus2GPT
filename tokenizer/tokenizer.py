@@ -1,6 +1,7 @@
 import sentencepiece as spm
 import os
 from utils import C2GModelBase
+import re
 
 class MultiLanguageTokenizer(C2GModelBase):
     """
@@ -148,18 +149,16 @@ class MultiLanguageTokenizer(C2GModelBase):
 
     def add_newlines_to_files(self, file_list, max_line_length):
         """
-        Scans a list of text files and adds newline characters to keep all lines shorter than a specified limit.
+        Scans a list of text files and adds newline characters to keep the number of words in each line shorter than a specified limit.
 
         Args:
             file_list (list of str): List of file paths to be scanned.
-            max_line_length (int): Maximum allowed length for each line.
+            max_line_length (int): Maximum allowed number of words for each line.
 
         Example:
-            ```
             >>> file_list = ['file1.txt', 'file2.txt']
-            >>> max_line_length = 50
+            >>> max_line_length = 10
             >>> add_newlines_to_files(file_list, max_line_length)
-            ```
 
         Returns:
             None
@@ -170,13 +169,12 @@ class MultiLanguageTokenizer(C2GModelBase):
 
             with open(file_path, 'w', encoding='utf-8') as file:
                 for line in lines:
-                    while len(line) > max_line_length:
-                        index = line.rfind(' ', 0, max_line_length)
-                        if index == -1:
-                            break
-                        file.write(line[:index + 1] + '\n')
-                        line = line[index + 1:]
-                    file.write(line)
+                    words = re.findall(r"\w+[']\w*", line)
+                    while len(words) > max_line_length:
+                        index = max_line_length
+                        file.write(' '.join(words[:index]) + '\n')
+                        words = words[index:]
+                    file.write(' '.join(words))
 
 
 

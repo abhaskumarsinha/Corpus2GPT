@@ -147,45 +147,39 @@ class MultiLanguageTokenizer(C2GModelBase):
             decoded_sentences.append(decoded_sentence)
         return decoded_sentences
 
-    def add_newlines_to_files(self, file_list, max_line_length):
+    def add_newlines_to_files(self, file_list, max_words_per_line):
         """
-        Scans a list of text files and adds newline characters to keep the number of words in each line shorter than a specified limit.
+        Scans a list of text files and adds newline characters to keep all lines shorter than a specified number of words.
 
         Args:
             file_list (list of str): List of file paths to be scanned.
-            max_line_length (int): Maximum allowed number of words for each line.
+            max_words_per_line (int): Maximum allowed number of words for each line.
 
         Example:
             >>> file_list = ['file1.txt', 'file2.txt']
-            >>> max_line_length = 10
-            >>> add_newlines_to_files(file_list, max_line_length)
+            >>> max_words_per_line = 5
+            >>> add_newlines_to_files(file_list, max_words_per_line)
 
         Returns:
             None
         """
+        breakpoint()
         for file_path in file_list:
             with open(file_path, 'r', encoding='utf-8') as file:
                 content = file.read()
 
-            words = re.findall(r"\w+[']\w*", content)
-            modified_content = []
-            current_line = []
-
-            for word in words:
-                if len(current_line) + 1 > max_line_length:
-                    modified_content.append(' '.join(current_line) + '\n')
-                    current_line = [word]
-                else:
-                    current_line.append(word)
-
-            if current_line:
-                modified_content.append(' '.join(current_line))
+            new_content = []
+            for line in content.splitlines():
+                words = re.split(r'\s+', line)
+                while words:
+                    line_words = words[:max_words_per_line]
+                    new_content.append(' '.join(line_words))
+                    words = words[max_words_per_line:]
 
             with open(file_path, 'w', encoding='utf-8') as file:
-                file.write(''.join(modified_content))
+                file.write('\n'.join(new_content))
 
-
-    def prepare_gpt_training_data(self, file_location):
+    def prepare_gpt_traiSSning_data(self, file_location):
         """
         Prepares input-output pairs for training a GPT model 
         using the specified text file.

@@ -163,7 +163,6 @@ class MultiLanguageTokenizer(C2GModelBase):
         Returns:
             None
         """
-        breakpoint()
         for file_path in file_list:
             with open(file_path, 'r', encoding='utf-8') as file:
                 content = file.read()

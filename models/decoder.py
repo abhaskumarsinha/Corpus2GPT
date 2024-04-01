@@ -46,29 +46,12 @@ class Decoder(keras.layers.Layer, C2GModelBase):
         self._config = {'dropout_rate': dropout_rate}
 
     def call(self, inputs):
-        """
-        Executes the forward pass of the Decoder layer.
-
-        Args:
-            inputs: Input tensor representing the sequence to be decoded.
-
-        Returns:
-            Tensor: Output tensor representing the decoded sequence.
-        """
         x = inputs
-        residual = x
-
-        # First sub-layer: Multi-head Self-Attention
         x = self.attn(x)
         x = self.dropout1(x)
-        x = self.norm1(x + residual)
+        out1 = self.norm1(x + inputs)
 
-        residual2 = x
-
-        # Second sub-layer: Feed-forward Neural Network
-        x = self.fc1(x)  # First feed-forward layer
-        x = self.fc2(x)  # Second feed-forward layer
-        x = self.dropout2(x)
-        x = self.norm2(x + residual2)
-
-        return x
+        x = out1
+        out1 = self.fc2(self.fc1(out1))
+        out1 = self.dropout2(out1)
+        return self.norm2(out1 + x)

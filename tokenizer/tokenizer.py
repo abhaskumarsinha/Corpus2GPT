@@ -178,7 +178,7 @@ class MultiLanguageTokenizer(C2GModelBase):
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.write('\n'.join(new_content))
 
-    def prepare_gpt_traiSSning_data(self, file_location):
+    def prepare_gpt_training_data(self, file_location):
         """
         Prepares input-output pairs for training a GPT model 
         using the specified text file.

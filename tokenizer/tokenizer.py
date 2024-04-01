@@ -165,17 +165,24 @@ class MultiLanguageTokenizer(C2GModelBase):
         """
         for file_path in file_list:
             with open(file_path, 'r', encoding='utf-8') as file:
-                lines = file.readlines()
+                content = file.read()
 
-            modified_lines = []
-            for line in lines:
-                words = re.findall(r"\w+[']\w*", line)
-                while words:
-                    modified_lines.append(' '.join(words[:max_line_length]) + '\n')
-                    words = words[max_line_length:]
+            words = re.findall(r"\w+[']\w*", content)
+            modified_content = []
+            current_line = []
+
+            for word in words:
+                if len(current_line) + 1 > max_line_length:
+                    modified_content.append(' '.join(current_line) + '\n')
+                    current_line = [word]
+                else:
+                    current_line.append(word)
+
+            if current_line:
+                modified_content.append(' '.join(current_line))
 
             with open(file_path, 'w', encoding='utf-8') as file:
-                file.writelines(modified_lines)
+                file.write(''.join(modified_content))
 
 
     def prepare_gpt_training_data(self, file_location):

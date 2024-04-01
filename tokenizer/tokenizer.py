@@ -165,16 +165,23 @@ class MultiLanguageTokenizer(C2GModelBase):
         """
         for file_path in file_list:
             with open(file_path, 'r', encoding='utf-8') as file:
-                lines = file.readlines()
+                content = file.read()
+
+            words = re.findall(r"\w+[']\w*", content)
+            new_content = []
+            current_line = []
+
+            for word in words:
+                current_line.append(word)
+                if len(current_line) == max_line_length:
+                    new_content.append(' '.join(current_line) + '\n')
+                    current_line = []
+
+            if current_line:
+                new_content.append(' '.join(current_line))
 
             with open(file_path, 'w', encoding='utf-8') as file:
-                for line in lines:
-                    words = re.findall(r"\w+[']\w*", line)
-                    while len(words) > max_line_length:
-                        index = max_line_length
-                        file.write(' '.join(words[:index]) + '\n')
-                        words = words[index:]
-                    file.write(' '.join(words))
+                file.write(''.join(new_content))
 
 
 

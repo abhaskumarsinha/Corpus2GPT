@@ -2,10 +2,11 @@ import keras
 import numpy as np
 from .sampling_strategies.sample_random import *
 
+
 class Generative_inference:
     def __init__(self, 
                  model,
-                 search_strategy=random_sampling_strategy,
+                 search_strategy,
                  tokenizer=None, 
                  vocab=None, 
                  prompt=[],
@@ -59,7 +60,7 @@ class Generative_inference:
         if len(prompt_tokens) > self.input_len:
             prompt_tokens = prompt_tokens[ : self.input_len]
         elif len(prompt_tokens) < self.input_len:
-            prompt_tokens += [self.padding_token]*(self.input_len - len(prompt_tokens))
+            prompt_tokens = [self.padding_token]*(self.input_len - len(prompt_tokens)) + prompt_tokens
         else:
             pass
         
@@ -73,10 +74,10 @@ class Generative_inference:
             gen_len += 1
 
             model_output = self.model(model_input)
-            output_token = self.search_strategy(outputs=model_output, pos_num=gen_len+input_prompt_token_len, **kwargs)
+            output_token = self.search_strategy(outputs=model_output, pos_num=-1, **kwargs)
             model_input = keras.ops.convert_to_numpy(model_input)
-            model_input = np.concatenate(([[output_token]], model_input), -1)
-            model_input = model_input[:, : -1]
+            model_input = np.concatenate((model_input, [[output_token]]), -1)
+            model_input = model_input[:, 1 :]
             #model_input = keras.ops.convert_to_tensor(model_input)
 
         model_input = keras.ops.convert_to_numpy(model_input)
@@ -88,7 +89,7 @@ class Generative_inference:
             else:
                 model_output += [tokenizer.inverse_vocab[ids]]
         
-        
+
         if self.tokenizer is not None:
             model_output = "".join(tokenizer.decode_tokens(" ".join(model_output)))
         else:

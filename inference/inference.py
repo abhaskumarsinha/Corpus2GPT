@@ -4,6 +4,15 @@ from .sampling_strategies.sample_random import *
 
 
 class Generative_inference:
+    """ Generate sentences using different search strategies.
+
+    Example:
+    ```
+        >>> inference = Generative_inference(model = model, tokenizer = tokenizer)
+        >>> inference.generate("Hello World")
+        '<unk> <unk> <unk> <unk> H e l l o W o r l d is one of the most common phrase used in ...'
+    ```
+    """
     def __init__(self, 
                  model,
                  search_strategy,

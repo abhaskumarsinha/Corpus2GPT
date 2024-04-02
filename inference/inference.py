@@ -1,10 +1,11 @@
 import keras
 import numpy as np
+from .sampling_strategies.sample_random import *
 
 class Generative_inference:
     def __init__(self, 
                  model,
-                 search_strategy,
+                 search_strategy=random_sampling_strategy,
                  tokenizer=None, 
                  vocab=None, 
                  prompt=[],

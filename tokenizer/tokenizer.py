@@ -80,7 +80,7 @@ class MultiLanguageTokenizer(C2GModelBase):
     #    return {cls.__name__ : _config}
         
 
-    def train_tokenizer_from_file(self, file_location, model_prefix='tokenizer', vocab_size=90):
+    def train_tokenizer_from_file(self, file_location, model_prefix='tokenizer', vocab_size=90, user_defined_symbols= '@@'):
         """
         Trains the tokenizer using the input file and loads the trained model.
 
@@ -92,7 +92,7 @@ class MultiLanguageTokenizer(C2GModelBase):
                                         Default is 90.
         """
         if not hasattr(self, 'vocab'):
-            spm.SentencePieceTrainer.train(input=file_location, model_prefix=model_prefix, vocab_size=vocab_size)
+            spm.SentencePieceTrainer.train(input=file_location, model_prefix=model_prefix, vocab_size=vocab_size, user_defined_symbols = user_defined_symbols)
 
         model_path = model_prefix + '.model'
         self.tokenizer.load(model_path)
@@ -166,7 +166,7 @@ class MultiLanguageTokenizer(C2GModelBase):
         for file_path in file_list:
             with open(file_path, 'r', encoding='utf-8') as file:
                 content = file.readlines()
-                content = ' '.join(line.strip() for line in content)
+                content = " ".join(content).replace('\n', ' ')
 
             new_content = []
             words = content.split()

@@ -2,77 +2,77 @@ import keras
 import numpy as np
 from .sampling_strategies.sample_random import *
 
-
 class Generative_inference:
-    """ Generate sentences using different search strategies.
+    """ 
+    This class facilitates text generation by utilizing a provided Keras model, 
+    tokenizer, and search strategy. It allows for the generation of text based 
+    on an initial prompt.
 
     Example:
-    ```
-        >>> inference = Generative_inference(model = model, tokenizer = tokenizer)
+        ```
+        >>> inference = Generative_inference(model = model,
+        >>>                          tokenizer = tokenizer,
+        >>>                          search_strategy=random_sampling_strategy)
         >>> inference.generate("Hello World")
-        '<unk> <unk> <unk> <unk> H e l l o W o r l d is one of the most common phrase used in ...'
-    ```
+         ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  Hello WorldAr things sayingWhen ruby...
+        ```
+    
     """
-    def __init__(self, 
+    def __init__(self,
                  model,
-                 search_strategy,
-                 tokenizer=None, 
-                 vocab=None, 
-                 prompt=[],
+                 tokenizer,
+                 search_strategy=random_sampling_strategy,
+                 prompt="Hello World",
                  input_len=64,
-                 padding_token = 0
+                 padding_token=0
                  ):
+        """
+        Constructor for Generative_inference class.
+
+        Args:
+            model: A Keras model used for text generation.
+            tokenizer: Tokenizer used to encode and decode text.
+            search_strategy: Strategy used for searching tokens during generation. Default is `random_sampling_strategy`
+            prompt (str): The initial prompt for text generation. Default is "Hello World".
+            input_len (int): Length of the input tokens. Default is 64.
+            padding_token (int): Token used for padding. Default is 0.
+        """
         self.search_strategy = search_strategy
         self.model = model
-        
-        if tokenizer is None and vocab is None:
-            raise Exception('Either a tokenizer from MultiLanguageTokenizer or vocab must be provided!')
-        
-        if tokenizer is not None:
-            self.tokenizer = tokenizer
-        else:
-            self.tokenizer = None
-            self.int_to_token = {i : vocab[i] for i in range(len(vocab))}
-            self.token_to_int = {int_to_token[i] : i for i in range(len(vocab))} 
-        
-        self.search_strategy = search_strategy
-
+        self.tokenizer = tokenizer
         self.prompt = prompt
         self.padding_token = padding_token
         self.input_len = input_len
-    
-    def generate(self, 
+
+    def generate(self,
                  prompt=None,
                  generate_limit=50,
                  **kwargs):
+        """
+        Generate text based on the provided prompt.
 
-      
+        Args:
+            prompt (str): The prompt for text generation. If not provided, uses the default prompt.
+            generate_limit (int): Maximum number of tokens to generate. Default is 50.
+            **kwargs: Additional keyword arguments to be passed to the search_strategy.
+
+        Returns:
+            str: Generated text.
+        """
+
         if prompt is None:
             prompt = self.prompt
         
-        if self.tokenizer is not None:
-            tokens = self.tokenizer.tokenize_sentences([prompt])
-        else:
-            tokens = prompt.split()
-        
-        prompt_tokens = []
-        for token in prompt:
-            if self.tokenizer is None:
-                prompt_tokens.append(self.token_to_int[token])
-            else:
-                try:
-                    prompt_tokens.append(self.tokenizer.vocab_dict[token])
-                except:
-                    pass
+        prompt_tokens = self.tokenizer.tokenizer.encode_as_ids(prompt)
+
         input_prompt_token_len = len(prompt_tokens)
-        
+
         if len(prompt_tokens) > self.input_len:
-            prompt_tokens = prompt_tokens[ : self.input_len]
+            prompt_tokens = prompt_tokens[:self.input_len]
         elif len(prompt_tokens) < self.input_len:
-            prompt_tokens = [self.padding_token]*(self.input_len - len(prompt_tokens)) + prompt_tokens
+            prompt_tokens = [self.padding_token] * (self.input_len - len(prompt_tokens)) + prompt_tokens
         else:
             pass
-        
 
         model_input = keras.ops.convert_to_tensor(prompt_tokens)
         model_input = keras.ops.reshape(model_input, (1, self.input_len))
@@ -87,21 +87,11 @@ class Generative_inference:
             model_input = keras.ops.convert_to_numpy(model_input)
             model_input = np.concatenate((model_input, [[output_token]]), -1)
             model_input = model_input[:, 1 :]
-            #model_input = keras.ops.convert_to_tensor(model_input)
-
+            # model_input = keras.ops.convert_to_tensor(model_input)
+        
+        model_input = keras.ops.reshape(model_input, (self.input_len,))
         model_input = keras.ops.convert_to_numpy(model_input)
 
-        model_output = []
-        for ids in model_input[0]:
-            if self.tokenizer is None:
-                model_output += [self.int_to_token[ids]]
-            else:
-                model_output += [tokenizer.inverse_vocab[ids]]
-        
+        model_output = self.tokenizer.tokenizer.decode_ids(model_input.tolist())
 
-        if self.tokenizer is not None:
-            model_output = "".join(tokenizer.decode_tokens(" ".join(model_output)))
-        else:
-            model_output = " ".join(model_output)
-         
         return model_output

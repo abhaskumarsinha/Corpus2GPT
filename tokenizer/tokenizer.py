@@ -173,7 +173,7 @@ class MultiLanguageTokenizer(C2GModelBase):
             new_content = [' '.join(words[i:i+max_words_per_line]) for i in range(0, len(words), max_words_per_line)]
             
             with open(file_path, 'w', encoding='utf-8') as file:
-                file.write('\n'.join(new_content))
+                file.write('\n'.join(content)) #new_content, for testing purposes
 
     def prepare_gpt_training_data(self, file_location):
         """

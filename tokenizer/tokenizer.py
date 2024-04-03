@@ -165,8 +165,8 @@ class MultiLanguageTokenizer(C2GModelBase):
         """
         for file_path in file_list:
             with open(file_path, 'r', encoding='utf-8') as file:
-                content = file.read()
-                content = content.replace('\n', '')
+                content = file.readlines()
+                content = ' '.join(line.strip() for line in content)
 
             new_content = []
             words = content.split()

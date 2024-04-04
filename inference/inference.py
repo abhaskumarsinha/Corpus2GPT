@@ -39,7 +39,7 @@ class Generative_inference:
             padding_token (int): Token used for padding. Default is 0.
         """
         self.search_strategy = search_strategy
-        self.kwargs = **kwargs
+        self.kwargs = kwargs
         self.model = model
         self.tokenizer = tokenizer
         self.prompt = prompt
@@ -85,7 +85,7 @@ class Generative_inference:
             gen_len += 1
 
             model_output = self.model(model_input)
-            output_token = self.search_strategy(outputs=model_output, pos_num=-1, self.kwargs)
+            output_token = self.search_strategy(outputs=model_output, pos_num=-1, **self.kwargs)
             model_input = keras.ops.convert_to_numpy(model_input)
             model_input = np.concatenate((model_input, [[output_token]]), -1)
             model_input = model_input[:, 1 :]

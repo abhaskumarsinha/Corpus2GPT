@@ -48,7 +48,7 @@ GPT Builder: Corpus2GPT provides a streamlined interface for building GPT models
 - **MoE Support**: Future iterations of Corpus2GPT will incorporate support for Mixture of Experts (MoE), enhancing model capacity and enabling more efficient handling of complex data distributions.
 - **Distributed Model Loading**: Plans are underway to introduce distributed loading of models across multiple devices such as GPUs and TPUs, optimizing training performance and scalability.
 - **RAG Models**: Corpus2GPT aims to integrate Retrieval-Augmented Generation (RAG) models, enabling models to access external knowledge for improved generation tasks.
-**Other Search Strategies**: In addition to random sampling, Corpus2GPT will introduce additional search strategies for inference, offering users a range of options for controlling model outputs.
+- **Other Search Strategies**: In addition to random sampling, Corpus2GPT will introduce additional search strategies for inference, offering users a range of options for controlling model outputs.
 - **Transformer Debugger**: To enhance model analysis and interpretability, Corpus2GPT will introduce a Transformer Debugger tool, aiding users in understanding model behavior and performance.
 - **Fine-Tuning Interface**: Implement a user-friendly interface for fine-tuning pre-trained GPT models on specific tasks or domains, allowing users to adapt models to their specific needs with ease.
 - **Hyperparameter Optimization**: Incorporate automated hyperparameter optimization algorithms, such as Bayesian optimization or evolutionary strategies, to streamline the process of finding optimal model configurations for specific tasks or datasets.

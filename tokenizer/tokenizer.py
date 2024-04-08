@@ -276,8 +276,8 @@ class SPM_Tokenizer:
     Examples:
     ```
         >>> # Create a new Tokenizer
-        >>> MultiLanguageTokenizer(vocab_size = 5000, corpus='./stories.txt')
-        >>> tokenizer = MultiLanguageTokenizer(vocab_model_file='./tokenizer_.model')
+        >>> SPM_Tokenizer(vocab_size = 5000, corpus='./stories.txt', input_size=100+1) # Context-width of GPT+1
+        >>> tokenizer = SPM_Tokenizer(vocab_model_file='./tokenizer_.model')
         Success!
         >>> tokenizer.tokenizer.encode_as_ids(['Hello World', 'How are you?'])
         [[3063, 215, 920, 129, 1323], [654, 54, 217, 78]]

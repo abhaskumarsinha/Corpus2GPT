@@ -46,3 +46,33 @@ class _C2G_CONFIG:
 
     def update_inverse_list(self):
         self._inv_dir = {value : key for key, value in self._dir.items()}
+
+
+class register_module:
+    """
+    This class is a decorator used for registering modules within the C2G system.
+
+    Methods
+        __init__(self, name): Initializes the module with a given name.
+        __call__(self, module): Registers the module with the provided name and updates the module list.
+
+    Examples
+        ```
+        >>> @register_module('add')
+        >>> def add(a, b):
+        >>>     return a+b
+        >>> add(-10, 12)
+        2
+        >>> cfg.display_available_modules()
+        Available Modules:
+        ADD
+        ```
+    """
+    def __init__(self, name):
+
+        self.name = name.upper()
+    def __call__(self, module):
+        cfg._dir[self.name] = module
+        cfg.update_inverse_list()
+        cfg._module_list.append(self.name)
+        return cfg._dir[self.name]

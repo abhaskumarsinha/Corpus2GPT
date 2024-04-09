@@ -143,7 +143,7 @@ class Attention(keras.layers.Layer):
 
 
 
-class AttentionTrain(keras.layers.Layer, C2GModelBase):
+class AttentionTrain(keras.layers.Layer):
     def _shape(self, tensor):
       """
       Reshapes the input tensor for multihead attention

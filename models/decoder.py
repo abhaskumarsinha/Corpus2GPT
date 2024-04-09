@@ -1,8 +1,7 @@
 import keras
-from utils import C2GModelBase
 from models.attention import Attention, AttentionTrain
 
-class Decoder(keras.layers.Layer, C2GModelBase):
+class Decoder(keras.layers.Layer):
     """
     Decoder layer in a Transformer model architecture.
 

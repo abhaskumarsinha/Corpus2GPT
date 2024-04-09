@@ -1,9 +1,8 @@
 import keras
 import numpy as np
-from utils import C2GModelBase
 
 
-class Attention(keras.layers.Layer, C2GModelBase):
+class Attention(keras.layers.Layer):
     """
     Multihead attention layer.
 

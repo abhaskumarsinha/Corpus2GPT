@@ -1,4 +1,4 @@
-from config import *
+from .config import *
 
 class BASE_C2G:
     """

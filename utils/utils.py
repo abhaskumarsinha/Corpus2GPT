@@ -1,5 +1,3 @@
-from .config import *
-
 class BASE_C2G:
     """
     This is the base class for C2G models.

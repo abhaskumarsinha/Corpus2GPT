@@ -1,7 +1,6 @@
 import keras
-from utils import C2GModelBase
 
-class GPT(keras.layers.Layer, C2GModelBase):
+class GPT(keras.layers.Layer):
     """
     GPT (Generative Pre-trained Transformer) layer.
 

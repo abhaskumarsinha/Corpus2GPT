@@ -1,4 +1,8 @@
 import keras
+from tokenizer.tokenizer import *
+from models.attention import *
+from models.decoder import *
+from models.embeddings import *
 
 class GPT(keras.layers.Layer):
     """
@@ -73,3 +77,48 @@ class GPT(keras.layers.Layer):
         x = self.lm_head(x)
 
         return x
+
+
+
+def build_GPT(input_len,
+              vocab_size,
+              embed_dim,
+              num_decoders,
+              dropout_rate,
+              num_heads,
+              head_dims,
+              fc_dim_factor,
+              optimizer='adam'
+              ):
+    """
+    Builds a GPT (Generative Pre-trained Transformer) model.
+
+    Parameters:
+        input_len (int): The length of the input sequence.
+        vocab_size (int): The size of the vocabulary.
+        embed_dim (int): The dimensionality of the token embeddings.
+        num_decoders (int): The number of decoder layers.
+        dropout_rate (float): The dropout rate to apply within the model.
+        num_heads (int): The number of attention heads in each decoder layer.
+        head_dims (int): The dimensionality of each attention head.
+        fc_dim_factor (int): The factor to determine the dimensionality
+                             of the feedforward network within each decoder layer.
+        optimizer (str, optional): The optimizer to use for training. 
+                                   Defaults to 'adam'.
+
+    Returns:
+        keras.Sequential: A GPT model compiled with binary 
+        crossentropy loss.
+
+    """
+    GPT = keras.Sequential()
+    GPT.add(keras.Input(shape=(input_len,)))
+    GPT.add(TokenAndPositionEmbedding(input_len, vocab_size, embed_dim))
+    for _ in range(num_decoders):
+        GPT.add(Decoder(dropout_rate, num_heads, head_dims, fc_dim_factor, input_len))
+    GPT.add(keras.layers.Dense(vocab_size+1))
+
+    loss_fn = keras.losses.BinaryCrossentropy(from_logits=True)
+    GPT.compile(optimizer=optimizer, loss=[loss_fn])
+
+    return GPT

@@ -158,7 +158,7 @@ def build_GPT(input_len,
         GPT.add(Decoder(dropout_rate, num_heads, head_dims, fc_dim_factor, input_len))
     GPT.add(keras.layers.Dense(vocab_size+1))
 
-    loss_fn = keras.losses.BinaryCrossentropy(from_logits=True)
+    loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     GPT.compile(optimizer=optimizer, loss=[loss_fn])
 
     # Calculate the total number of floating-point operations              

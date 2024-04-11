@@ -4,6 +4,47 @@ from models.attention import *
 from models.decoder import *
 from models.embeddings import *
 
+def FLOP(input_len, vocab_size, embed_dim, num_heads, num_decoders, fc_dim_factor):
+    """ 
+    Calculate total number of FLOPs, see Chinchilla 
+    paper Appendix F as reference: https://arxiv.org/pdf/2203.15556.pdf
+
+    Copied from: https://github.com/karpathy/nanoGPT/blob/master/scaling_laws.ipynb
+    """ 
+    key_size = embed_dim // num_heads
+
+    # embeddings
+    embeddings = 2 * input_len * vocab_size * embed_dim
+
+    # attention
+    # key, query, value projections
+    attention = 2 * 3 * input_len * embed_dim * (key_size * num_heads)
+    # key @ query logits
+    attlogits = 2 * input_len * input_len * (key_size * num_heads)
+    # softmax
+    attsoftmax = 3 * num_heads * input_len * input_len # 3* is for subtract (max), exp, divide (?)
+    # softmax @ value reductions
+    attvalue = 2 * input_len * input_len * (key_size * num_heads)
+    # final linear
+    attlinear = 2 * input_len * (key_size * num_heads) * embed_dim
+    att = attention + attlogits + attsoftmax + attvalue + attlinear
+    # feed forward
+    dense = 2 * input_len * (embed_dim * embed_dim*fc_dim_factor + embed_dim * embed_dim*fc_dim_factor)
+
+    # logits
+    logits = 2 * input_len * embed_dim * vocab_size
+    
+    # this is what you'd expect:
+    # forward_flops = embeddings + num_decoders * (att + dense) + logits
+    # but:
+    # per author correspondence apparently there is typo in the paper,
+    # they do not count embeddings and logits to repro table 4. So instead:
+    forward_flops = num_decoders * (att + dense)
+    backward_flops = 2 * forward_flops # as in Kaplan et al. 2020
+    total_flops = forward_flops + backward_flops
+
+    return total_flops
+
 class GPT(keras.layers.Layer):
     """
     GPT (Generative Pre-trained Transformer) layer.
@@ -107,8 +148,7 @@ def build_GPT(input_len,
                                    Defaults to 'adam'.
 
     Returns:
-        keras.Sequential: A GPT model compiled with binary 
-        crossentropy loss.
+        tuple: A tuple containing the GPT model and the total number of floating-point operations (FLOPs).
 
     """
     GPT = keras.Sequential()
@@ -121,4 +161,7 @@ def build_GPT(input_len,
     loss_fn = keras.losses.BinaryCrossentropy(from_logits=True)
     GPT.compile(optimizer=optimizer, loss=[loss_fn])
 
-    return GPT
+    # Calculate the total number of floating-point operations              
+    flops = FLOP(input_len, vocab_size, embed_dim, num_heads, num_decoders, fc_dim_factor)
+    return GPT, flops
+

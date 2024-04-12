@@ -1,6 +1,6 @@
 import numpy as np
 
-def estimate_optimal_ratios_from_flops(model_configs, 
+def estimate_optimal_ratios_from_models(model_configs, 
                                        train_seq_len,
                                        x_train,
                                        y_train,

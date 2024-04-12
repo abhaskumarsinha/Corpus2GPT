@@ -74,7 +74,7 @@ def estimate_optimal_ratios_from_models(model_configs,
             _loss_history.append(loss_history)
             _model_params.append(model_params)
     
-    return (np.array(_flops), np.array(_loss_history), np.array(_model_params)
+    return (np.array(_flops), np.array(_loss_history), np.array(_model_params))
 
 import numpy as np
 

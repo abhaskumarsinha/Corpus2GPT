@@ -70,7 +70,7 @@ def estimate_optimal_ratios_from_models(model_configs,
             loss_history = history.history['loss']
             
             # Store results
-            _flops.append(flops)
+            _flops.append(flops*seq_len*max_epochs)
             _loss_history.append(loss_history)
             _model_params.append(model_params)
     
@@ -143,7 +143,7 @@ def estimate_optimal_ratios_from_flops(flop_list,
             history = GPT.fit(x_train, y_train, batch_size=batch_size, epochs=epochs)
 
             loss_history.append(history.history['loss'])
-            flop_history.append(flop)
+            flop_history.append(flop*batch_size*epochs)
             parameters.append(GPT.count_params())
 
     return loss_history, flop_history, parameters

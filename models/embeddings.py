@@ -11,12 +11,12 @@ class TokenAndPositionEmbedding(keras.layers.Layer):
     to provide input embeddings for Transformer models.
 
     Parameters:
-        maxlen (int): Maximum length of the input sequence.
-        vocab_size (int): Size of the vocabulary.
-        embed_dim (int): Dimensionality of the embedding vectors.
+    - maxlen (int): Maximum length of the input sequence.
+    - vocab_size (int): Size of the vocabulary.
+    - embed_dim (int): Dimensionality of the embedding vectors.
 
     Example:
-        ```
+        ```python
         >>> embed = TokenAndPositionEmbedding(64, 8008, 1280)
         >>> input_sentence = keras.ops.ones((1, 10))
 
@@ -29,9 +29,9 @@ class TokenAndPositionEmbedding(keras.layers.Layer):
         Initializes the TokenAndPositionEmbedding layer.
 
         Args:
-            maxlen (int): Maximum length of the input sequence.
-            vocab_size (int): Size of the vocabulary.
-            embed_dim (int): Dimensionality of the embedding vectors.
+        - maxlen (int): Maximum length of the input sequence.
+        - vocab_size (int): Size of the vocabulary.
+        - embed_dim (int): Dimensionality of the embedding vectors.
         """
         super().__init__()
         self.token_emb = keras.layers.Embedding(input_dim=vocab_size, output_dim=embed_dim)
@@ -42,10 +42,10 @@ class TokenAndPositionEmbedding(keras.layers.Layer):
         Executes the forward pass of the TokenAndPositionEmbedding layer.
 
         Args:
-            x: Input tensor representing token indices.
+        - x: Input tensor representing token indices.
 
         Returns:
-            tf.Tensor: Output tensor representing the combined embeddings.
+        - keras.Tensor: Output tensor representing the combined embeddings.
         """
         maxlen = keras.ops.shape(x)[-1]
         positions = keras.ops.arange(0, maxlen, 1)

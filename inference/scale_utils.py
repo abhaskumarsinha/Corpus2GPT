@@ -8,15 +8,15 @@ def normalize_list(numbers):
     Normalizes a list of numbers to the range [0, 1].
     
     Args:
-        numbers (list of numeric): List of numbers to be normalized.
+    - numbers (list of numeric): List of numbers to be normalized.
         
     Returns:
-        list of float: Normalized list of numbers.
+    - list of float: Normalized list of numbers.
 
     Formula:
-        $x_i = \frac{x_i - x_{min}}{x_{min} - x_{max}}$
-        where, $x_{min}$ is the smallest value of all $x_i$
-        $x_{max}$ is the largest value of all $x_i$ for all valid $i$.
+    - $x_i = \frac{x_i - x_{min}}{x_{min} - x_{max}}$
+    - where, $x_{min}$ is the smallest value of all $x_i$
+    - $x_{max}$ is the largest value of all $x_i$ for all valid $i$.
     """
     min_val = min(numbers)
     max_val = max(numbers)
@@ -48,7 +48,7 @@ def estimate_optimal_ratios_from_models(model_configs,
     - model_params (numpy array): Array of total model parameters for each experiment.
 
     Example:
-        ```
+        ```python
         >>> # Define the Model configs to be tested for
         >>> vocab_size = 454+1
         >>> input_len = 256

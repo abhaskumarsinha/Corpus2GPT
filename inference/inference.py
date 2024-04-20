@@ -7,15 +7,6 @@ class Generative_inference:
     This class facilitates text generation by utilizing a provided Keras model, 
     tokenizer, and search strategy. It allows for the generation of text based 
     on an initial prompt.
-
-    Example:
-        ```
-        >>> inference = Generative_inference(model = model,
-        >>>                          tokenizer = tokenizer,
-        >>>                          search_strategy=random_sampling_strategy)
-        >>> inference.generate("Hello World")
-         ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  Hello WorldAr things sayingWhen ruby...
-        ```
     
     Attributes:
     - model: A Keras model used for text generation.
@@ -31,6 +22,15 @@ class Generative_inference:
         
     - generate(self, prompt=None, generate_limit=50, **kwargs):
             Generate text based on the provided prompt.
+
+    Example:
+        ```
+        >>> inference = Generative_inference(model = model,
+        >>>                          tokenizer = tokenizer,
+        >>>                          search_strategy=random_sampling_strategy)
+        >>> inference.generate("Hello World")
+         ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  Hello WorldAr things sayingWhen ruby...
+        ```
     """
     def __init__(self,
                  model,

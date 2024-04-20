@@ -27,7 +27,7 @@ class AttentionTrain(keras.layers.Layer):
         dropout (keras.layers.Dropout): Dropout layer.
 
     Formula:
-        $Attention(K, Q, V)_{\text{head}} = softmax \left( \dfrac{QK^T}{\sqrt{d_k}} \right) V$
+        $Attention(K, Q, V)_{\text{head}} = softmax ( \dfrac{QK^T}{\sqrt{d_k}}) V$
         for each head
 
     Example:

@@ -18,18 +18,18 @@ class Generative_inference:
         ```
     
     Attributes:
-        model: A Keras model used for text generation.
-        tokenizer: Tokenizer used to encode and decode text.
-        search_strategy: Strategy used for searching tokens during generation. Default is `random_sampling_strategy`.
-        prompt (str): The initial prompt for text generation. Default is "Hello World".
-        input_len (int): Length of the input tokens. Default is 64.
-        padding_token (int): Token used for padding. Default is 0.
+    - model: A Keras model used for text generation.
+    - tokenizer: Tokenizer used to encode and decode text.
+    - search_strategy: Strategy used for searching tokens during generation. Default is `random_sampling_strategy`.
+    - prompt (str): The initial prompt for text generation. Default is "Hello World".
+    - input_len (int): Length of the input tokens. Default is 64.
+    - padding_token (int): Token used for padding. Default is 0.
 
     Methods:
-        __init__(self, model, tokenizer, search_strategy=random_sampling_strategy, prompt="Hello World", input_len=64, padding_token=0, **kwargs):
+    - __init__(self, model, tokenizer, search_strategy=random_sampling_strategy, prompt="Hello World", input_len=64, padding_token=0, **kwargs):
             Constructor for Generative_inference class.
         
-        generate(self, prompt=None, generate_limit=50, **kwargs):
+    - generate(self, prompt=None, generate_limit=50, **kwargs):
             Generate text based on the provided prompt.
     """
     def __init__(self,
@@ -45,12 +45,12 @@ class Generative_inference:
         Constructor for Generative_inference class.
 
         Args:
-            model: A Keras model used for text generation.
-            tokenizer: Tokenizer used to encode and decode text.
-            search_strategy: Strategy used for searching tokens during generation. Default is `random_sampling_strategy`
-            prompt (str): The initial prompt for text generation. Default is "Hello World".
-            input_len (int): Length of the input tokens. Default is 64.
-            padding_token (int): Token used for padding. Default is 0.
+        - model: A Keras model used for text generation.
+        - tokenizer: Tokenizer used to encode and decode text.
+        - search_strategy: Strategy used for searching tokens during generation. Default is `random_sampling_strategy`
+        - prompt (str): The initial prompt for text generation. Default is "Hello World".
+        - input_len (int): Length of the input tokens. Default is 64.
+        - padding_token (int): Token used for padding. Default is 0.
         """
         self.search_strategy = search_strategy
         self.kwargs = kwargs
@@ -68,12 +68,12 @@ class Generative_inference:
         Generate text based on the provided prompt.
 
         Args:
-            prompt (str): The prompt for text generation. If not provided, uses the default prompt.
-            generate_limit (int): Maximum number of tokens to generate. Default is 50.
-            **kwargs: Additional keyword arguments to be passed to the search_strategy.
+        - prompt (str): The prompt for text generation. If not provided, uses the default prompt.
+        - generate_limit (int): Maximum number of tokens to generate. Default is 50.
+        - **kwargs: Additional keyword arguments to be passed to the search_strategy.
 
         Returns:
-            str: Generated text.
+        - str: Generated text.
         """
 
         if prompt is None:

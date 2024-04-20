@@ -24,7 +24,7 @@ class Generative_inference:
             Generate text based on the provided prompt.
 
     Example:
-        ```
+        ```python
         >>> inference = Generative_inference(model = model,
         >>>                          tokenizer = tokenizer,
         >>>                          search_strategy=random_sampling_strategy)

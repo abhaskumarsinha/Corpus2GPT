@@ -3,18 +3,18 @@ class _C2G_CONFIG:
     This class provides functionalities for managing configurations and modules within the C2G system.
 
     Methods
-        clean_config(): Resets the configuration dictionary.
-        clean_dir(): Clears the module directory and module list.
-        display_available_modules(): Prints the names of available modules.
-        update_inverse_list(): Updates the inverse dictionary of module names.
+    - clean_config(): Resets the configuration dictionary.
+    - clean_dir(): Clears the module directory and module list.
+    - display_available_modules(): Prints the names of available modules.
+    - update_inverse_list(): Updates the inverse dictionary of module names.
 
     Attributes:
-        _C: A dictionary storing configuration settings.
-        _dir: A dictionary mapping module names to their corresponding objects.
-        _module_list: A list containing names of registered modules.
+    - _C: A dictionary storing configuration settings.
+    - _dir: A dictionary mapping module names to their corresponding objects.
+    - _module_list: A list containing names of registered modules.
 
     Example:
-        ```
+        ```python
         >>> @register_module('add')
         >>> def add(a, b):
         >>>     return a+b
@@ -53,11 +53,11 @@ class register_module:
     This class is a decorator used for registering modules within the C2G system.
 
     Methods
-        __init__(self, name): Initializes the module with a given name.
-        __call__(self, module): Registers the module with the provided name and updates the module list.
+    - __init__(self, name): Initializes the module with a given name.
+    - __call__(self, module): Registers the module with the provided name and updates the module list.
 
     Examples
-        ```
+        ```python
         >>> @register_module('add')
         >>> def add(a, b):
         >>>     return a+b

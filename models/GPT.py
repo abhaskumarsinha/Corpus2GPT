@@ -58,27 +58,31 @@ class GPT(keras.layers.Layer):
     by a linear mapping head for language modeling.
 
     Parameters:
-        decoder (class): Class representing the decoder layer of the Transformer model.
-        embeddings (class): Class representing the token embeddings.
-        pos_embeddings (class): Class representing the positional embeddings.
-        embedding_size (int): Size of the token embeddings. Default is 1280.
-        vocab_size (int): Size of the vocabulary. Default is 8008.
-        input_len (int): Length of the input sequence. Default is 64.
-        num_decoders (int): Number of decoder layers in the GPT model. Default is 5.
-        dropout_rate (float): Dropout rate. Default is 0.1.
-        num_heads (int): Number of attention heads. Default is 32.
-        head_dims (int): Dimensionality of each attention head. Default is 40.
-        fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
+    - decoder (class): Class representing the decoder layer of the Transformer model.
+    - embeddings (class): Class representing the token embeddings.
+    - pos_embeddings (class): Class representing the positional embeddings.
+    - embedding_size (int): Size of the token embeddings. Default is 1280.
+    - vocab_size (int): Size of the vocabulary. Default is 8008.
+    - input_len (int): Length of the input sequence. Default is 64.
+    - num_decoders (int): Number of decoder layers in the GPT model. Default is 5.
+    - dropout_rate (float): Dropout rate. Default is 0.1.
+    - num_heads (int): Number of attention heads. Default is 32.
+    - head_dims (int): Dimensionality of each attention head. Default is 40.
+    - fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
 
     Attributes:
-        num_decoders (int): Number of decoder layers in the GPT model.
-        decoders (list): List of decoder layer instances.
-        embeddings (keras.layers.Layer): Token embeddings layer instance.
-        lm_head (keras.layers.Dense): Dense layer for language modeling.
-        _config (dict): Configuration dictionary storing the parameters used to initialize the GPT layer.
+    - num_decoders (int): Number of decoder layers in the GPT model.
+    - decoders (list): List of decoder layer instances.
+    - embeddings (keras.layers.Layer): Token embeddings layer instance.
+    - lm_head (keras.layers.Dense): Dense layer for language modeling.
+    - _config (dict): Configuration dictionary storing the parameters used to initialize the GPT layer.
+
+    References:
+        - Radford, Alec, et al. "Improving language understanding by generative pre-training." (2018).
+        - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
 
     Example:
-        ```
+        ```python
         >>> import keras
         >>> from Corpus2GPT.models import *
 
@@ -88,9 +92,6 @@ class GPT(keras.layers.Layer):
         >>> GPT = keras.Model(inputs=in, outputs=out)
         >>> GPT.summary()
         ```
-    References:
-        - Radford, Alec, et al. "Improving language understanding by generative pre-training." (2018).
-        - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
     """
 
     def __init__(self, decoder, embeddings, pos_embeddings=None, embedding_size=1280, vocab_size=8008, input_len=64, num_decoders=5, dropout_rate=0.1, num_heads=32, head_dims=40, fc_dim_factor=5):
@@ -98,17 +99,17 @@ class GPT(keras.layers.Layer):
         Initializes the GPT layer.
 
         Args:
-            decoder (class): Class representing the decoder layer of the Transformer model.
-            embeddings (class): Class representing the token embeddings.
-            pos_embeddings (class): Class representing the positional embeddings.
-            embedding_size (int): Size of the token embeddings. Default is 1280.
-            vocab_size (int): Size of the vocabulary. Default is 8008.
-            input_len (int): Length of the input sequence. Default is 64.
-            num_decoders (int): Number of decoder layers in the GPT model. Default is 5.
-            dropout_rate (float): Dropout rate. Default is 0.1.
-            num_heads (int): Number of attention heads. Default is 32.
-            head_dims (int): Dimensionality of each attention head. Default is 40.
-            fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
+        - decoder (class): Class representing the decoder layer of the Transformer model.
+        - embeddings (class): Class representing the token embeddings.
+        - pos_embeddings (class): Class representing the positional embeddings.
+        - embedding_size (int): Size of the token embeddings. Default is 1280.
+        - vocab_size (int): Size of the vocabulary. Default is 8008.
+        - input_len (int): Length of the input sequence. Default is 64.
+        - num_decoders (int): Number of decoder layers in the GPT model. Default is 5.
+        - dropout_rate (float): Dropout rate. Default is 0.1.
+        - num_heads (int): Number of attention heads. Default is 32.
+        - head_dims (int): Dimensionality of each attention head. Default is 40.
+        - fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
         """
         super().__init__()
 
@@ -127,10 +128,10 @@ class GPT(keras.layers.Layer):
         Executes the forward pass of the GPT layer.
 
         Args:
-            inputs: Input tensor representing the token indices.
+        - inputs: Input tensor representing the token indices.
 
         Returns:
-            Tensor: Output tensor representing the logits for language modeling.
+        - Tensor: Output tensor representing the logits for language modeling.
         """
         x = inputs
         x = self.embeddings(x)
@@ -158,33 +159,33 @@ def build_GPT(input_len,
     Builds a GPT (Generative Pre-trained Transformer) model.
 
     Parameters:
-        input_len (int): The length of the input sequence.
-        vocab_size (int): The size of the vocabulary.
-        embed_dim (int): The dimensionality of the token embeddings.
-        num_decoders (int): The number of decoder layers.
-        dropout_rate (float): The dropout rate to apply within the model.
-        num_heads (int): The number of attention heads in each decoder layer.
-        head_dims (int): The dimensionality of each attention head.
-        fc_dim_factor (int): The factor to determine the dimensionality
+    - input_len (int): The length of the input sequence.
+    - vocab_size (int): The size of the vocabulary.
+    - embed_dim (int): The dimensionality of the token embeddings.
+    - num_decoders (int): The number of decoder layers.
+    - dropout_rate (float): The dropout rate to apply within the model.
+    - num_heads (int): The number of attention heads in each decoder layer.
+    - head_dims (int): The dimensionality of each attention head.
+    - fc_dim_factor (int): The factor to determine the dimensionality
                              of the feedforward network within each decoder layer.
-        optimizer (str, optional): The optimizer to use for training. 
+    - optimizer (str, optional): The optimizer to use for training. 
                                    Defaults to 'adam'.
 
     Returns:
-        tuple: A tuple containing the GPT model and the total number of floating-point operations (FLOPs).
+    - tuple: A tuple containing the GPT model and the total number of floating-point operations (FLOPs).
+
+    References:
+    - Radford, Alec, et al. "Improving language understanding by generative pre-training." (2018).
+    - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
 
     Example:
-        ```
+        ```python
         >>> GPT, flops = build_GPT(256, vocab_size, 1000, 2, 0, 50, 20, 5)
 
         >>> # The total computational Floating-Point operations required for a single forward inference
         >>> print(flops)
         >>> GPT.summary()
         ```
-
-    References:
-        - Radford, Alec, et al. "Improving language understanding by generative pre-training." (2018).
-        - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
 
     """
     GPT = keras.Sequential()

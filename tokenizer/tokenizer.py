@@ -8,20 +8,20 @@ class SPM_Tokenizer:
     A class for tokenizing text data in multiple languages using SentencePiece.
     
     Attributes:
-        vocab_model_file (str): The file path to the pre-trained SentencePiece vocabulary model file.
-        vocab_size (int): The size of the vocabulary for training the tokenizer.
-        corpus (str): The file path to the corpus used for training the tokenizer if no pre-trained vocabulary model is provided.
-        model_prefix (str): The prefix for the output files generated during training if no pre-trained vocabulary model is provided.
-        input_size (int): The maximum sequence length for tokenized sequences.
-        model_type (str): The type of SentencePiece model to train, default is "unigram".
-        tokenizer (spm.SentencePieceProcessor): The SentencePiece tokenizer object.
+    - vocab_model_file (str): The file path to the pre-trained SentencePiece vocabulary model file.
+    - vocab_size (int): The size of the vocabulary for training the tokenizer.
+    - corpus (str): The file path to the corpus used for training the tokenizer if no pre-trained vocabulary model is provided.
+    - model_prefix (str): The prefix for the output files generated during training if no pre-trained vocabulary model is provided.
+    - input_size (int): The maximum sequence length for tokenized sequences.
+    - model_type (str): The type of SentencePiece model to train, default is "unigram".
+    - tokenizer (spm.SentencePieceProcessor): The SentencePiece tokenizer object.
     
     Methods:
-        load_file(file_path): Loads and tokenizes text data from a file.
-        load_dataset(list_files): Loads and tokenizes text data from a list of files, yielding input-output pairs for training.
+    - load_file(file_path): Loads and tokenizes text data from a file.
+    - load_dataset(list_files): Loads and tokenizes text data from a list of files, yielding input-output pairs for training.
 
     Examples:
-    ```
+    ```python
         >>> # Create a new Tokenizer
         >>> SPM_Tokenizer(vocab_size = 5000, corpus='./stories.txt', input_size=100+1) # Context-width of GPT+1
         >>> tokenizer = SPM_Tokenizer(vocab_model_file='./tokenizer_.model')
@@ -44,12 +44,12 @@ class SPM_Tokenizer:
         Initializes the MultiLanguageTokenizer object.
         
         Parameters:
-            vocab_model_file (str): The file path to the pre-trained SentencePiece vocabulary model file.
-            vocab_size (int): The size of the vocabulary for training the tokenizer.
-            corpus (str): The file path to the corpus used for training the tokenizer if no pre-trained vocabulary model is provided.
-            model_prefix (str): The prefix for the output files generated during training if no pre-trained vocabulary model is provided.
-            input_size (int): The maximum sequence length for tokenized sequences.
-            model_type (str): The type of SentencePiece model to train, default is "unigram".
+        - vocab_model_file (str): The file path to the pre-trained SentencePiece vocabulary model file.
+        - vocab_size (int): The size of the vocabulary for training the tokenizer.
+        - corpus (str): The file path to the corpus used for training the tokenizer if no pre-trained vocabulary model is provided.
+        - model_prefix (str): The prefix for the output files generated during training if no pre-trained vocabulary model is provided.
+        - input_size (int): The maximum sequence length for tokenized sequences.
+        - model_type (str): The type of SentencePiece model to train, default is "unigram".
         """
         self.input_size = input_size
         if vocab_model_file is not None and os.path.exists(vocab_model_file):
@@ -69,10 +69,10 @@ class SPM_Tokenizer:
         Loads and tokenizes text data from a file.
         
         Parameters:
-            file_path (str): The file path to the text file.
+        - file_path (str): The file path to the text file.
             
         Returns:
-            list: A list of tokenized sequences.
+        - list: A list of tokenized sequences.
         """
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.readlines()
@@ -89,10 +89,10 @@ class SPM_Tokenizer:
         Loads and tokenizes text data from a list of files, yielding input-output pairs for training.
         
         Parameters:
-            list_files (list): A list of file paths to text files.
+        - list_files (list): A list of file paths to text files.
             
         Yields:
-            tuple: A tuple containing input and output sequences.
+        - tuple: A tuple containing input and output sequences.
         """
         for file in list_files:
             content = self.load_file(file)

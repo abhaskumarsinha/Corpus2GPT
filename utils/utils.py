@@ -3,12 +3,12 @@ class BASE_C2G:
     This is the base class for C2G models.
 
     Class Methods
-        serialize_c2g(cls, config): Serializes the configuration into a dictionary.
-        deserialize_c2g(self, config): Deserializes the configuration from a dictionary.
-        construct_model(self, configs): Abstract method for constructing a model. This needs to be implemented by subclasses.
+    - serialize_c2g(cls, config): Serializes the configuration into a dictionary.
+    - deserialize_c2g(self, config): Deserializes the configuration from a dictionary.
+    - construct_model(self, configs): Abstract method for constructing a model. This needs to be implemented by subclasses.
         
     Examples
-        ```
+        ```python
         >>> @register_module('test_module')
         >>> class test_module(BASE_C2G):
         >>>     def __init__(self, a, b):

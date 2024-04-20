@@ -1,5 +1,5 @@
 import keras
-from models.attention import Attention, AttentionTrain
+from models.attention import AttentionTrain
 
 class Decoder(keras.layers.Layer):
     """

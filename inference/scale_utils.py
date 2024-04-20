@@ -15,11 +15,8 @@ def normalize_list(numbers):
 
     Formula:
         $x_i = \frac{x_i - x_{min}}{x_{min} - x_{max}}$
-        
-        where,
-        $x_{min}$ is the smallest value of all $x_i$
-        $x_{max}$ is the largest value of all $x_i$
-        for all valid $i$.
+        where, $x_{min}$ is the smallest value of all $x_i$
+        $x_{max}$ is the largest value of all $x_i$ for all valid $i$.
     """
     min_val = min(numbers)
     max_val = max(numbers)

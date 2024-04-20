@@ -12,6 +12,13 @@ def normalize_list(numbers):
         
     Returns:
         list of float: Normalized list of numbers.
+
+    Formula:
+        $x_i = \frac{x_i - x_{\text{min}}}{x_{\text{min}} - x_{\text{max}}}$
+        where,
+            $x_{\text{min}}$ is the smallest value of all $x_i$
+            $x_{\text{max}}$ is the largest value of all $x_i$
+            for all valid $i$.
     """
     min_val = min(numbers)
     max_val = max(numbers)
@@ -41,6 +48,40 @@ def estimate_optimal_ratios_from_models(model_configs,
     - flops (numpy array): Array of FLOP counts for each experiment.
     - loss_history (numpy array): Array of loss histories for each experiment.
     - model_params (numpy array): Array of total model parameters for each experiment.
+
+    Example:
+        ```
+        >>> # Define the Model configs to be tested for
+        >>> vocab_size = 454+1
+        >>> input_len = 256
+
+        >>> model_configs =  [
+        >>>     (input_len, vocab_size, 100, 1, 0, 10, 10, 1),
+        >>>     (input_len, vocab_size, 200, 2, 0, 10, 20, 1),
+        >>>     (input_len, vocab_size, 300, 1, 0, 30, 10, 1),
+        >>>     (input_len, vocab_size, 400, 1, 0, 10, 40, 1),
+        >>> ]
+
+        >>> # Start testing the models by training them
+        >>> model_epochs = estimate_optimal_ratios_from_models(model_configs, [1000, 2500, 5000], X[:5000], Y[:5000], 30, 128)
+
+        >>> # Preprocessing numbers for plotting
+        >>> flops = model_epochs[0]
+        >>> loss_curve = model_epochs[1]
+        >>> params = model_epochs[2]
+
+        >>> flops_c = normalize_list(flops)
+
+        >>> # Plotting
+        >>> import matplotlib.pyplot as plt
+
+        >>> fig = plt.figure(figsize=(10, 10), dpi=200)
+        >>> for i in range(12):
+        >>>     plt.plot(loss_curve[i], c=[flops_c[i], 0, 0], label=f'Floating-point Operations/forward inference: {flops[i]}' )
+        >>> plt.legend()
+        >>> plt.xlabel('Gradient Update Number #1')
+        >>> plt.ylabel('Sparse Crossentropy Loss (with Logits)')
+        ```
     """
 
     total_models = len(model_configs)
@@ -76,8 +117,6 @@ def estimate_optimal_ratios_from_models(model_configs,
     
     return (np.array(_flops), np.array(_loss_history), np.array(_model_params))
 
-import numpy as np
-
 def estimate_optimal_ratios_from_flops(flop_list,
                                        input_len,
                                        num_heads,
@@ -106,6 +145,10 @@ def estimate_optimal_ratios_from_flops(flop_list,
         y_train (numpy.ndarray): Training target data.
         trials_per_flop (int, optional): Number of trials per FLOP count. Defaults to 2.
         batch_size (int, optional): Batch size for training. Defaults to 32.
+
+    Warning:
+        **The `estimate_optimal_ratios_from_flops` is currently in the experimental phase
+        and hasn't been tested thoroughly. It could lead to bugs!**
 
     Returns:
         tuple: Tuple containing loss history, FLOP history, and number of parameters for each trial.

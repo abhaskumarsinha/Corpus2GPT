@@ -16,28 +16,28 @@ class AttentionTrain(keras.layers.Layer):
     performs dropout.
 
     Attributes:
-        num_heads (int): Number of attention heads.
-        head_dims (int): Dimensionality of each attention head.
-        k (keras.layers.Dense): Dense layer for computing the keys.
-        q (keras.layers.Dense): Dense layer for computing the queries.
-        v (keras.layers.Dense): Dense layer for computing the values.
-        out (keras.layers.Dense): Dense layer for the output.
-        q_norm (float): Normalization factor for queries.
-        mask (tf.Tensor): Triangular mask tensor.
-        dropout (keras.layers.Dropout): Dropout layer.
+    - num_heads (int): Number of attention heads.
+    - head_dims (int): Dimensionality of each attention head.
+    - k (keras.layers.Dense): Dense layer for computing the keys.
+    - q (keras.layers.Dense): Dense layer for computing the queries.
+    - v (keras.layers.Dense): Dense layer for computing the values.
+    - out (keras.layers.Dense): Dense layer for the output.
+    - q_norm (float): Normalization factor for queries.
+    - mask (tf.Tensor): Triangular mask tensor.
+    - dropout (keras.layers.Dropout): Dropout layer.
 
     Formula:
-        $Attention(K, Q, V)_{\text{head}} = softmax ( \dfrac{QK^T}{\sqrt{d_k}}) V$
-        for each head
-
-    Example:
-        ```
-        >>> attn = AttentionTrain(32, 40)
-        >>> print(attn(keras.ops.ones((1, 1, 1280))
-        ```
+    - $Attention(K, Q, V)_{\text{head}} = softmax ( \dfrac{QK^T}{\sqrt{d_k}}) V$
+      for each head
 
     References:
         - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
+
+    Example:
+        ```python
+        >>> attn = AttentionTrain(32, 40)
+        >>> print(attn(keras.ops.ones((1, 1, 1280))
+        ```
     """
 
     def _shape(self, tensor):
@@ -45,10 +45,10 @@ class AttentionTrain(keras.layers.Layer):
         Reshapes the input tensor for multihead attention computations.
 
         Args:
-            tensor (tf.Tensor): Input tensor.
+        - tensor (tf.Tensor): Input tensor.
 
         Returns:
-            tf.Tensor: Reshaped tensor.
+        - tf.Tensor: Reshaped tensor.
         """
         bsz = keras.ops.shape(tensor)[0]
         tensor = keras.ops.reshape(tensor, (bsz, -1, self.num_heads, self.head_dims))
@@ -61,10 +61,10 @@ class AttentionTrain(keras.layers.Layer):
         to prevent attending to future positions.
 
         Args:
-            num_words (int): Number of words in the sequence.
+        - num_words (int): Number of words in the sequence.
 
         Returns:
-            tf.Tensor: Triangular mask tensor.
+        - tf.Tensor: Triangular mask tensor.
         """
         tensor = np.full((num_words, num_words), np.inf)  # Initialize tensor with infinity
         for i in range(num_words):
@@ -76,10 +76,10 @@ class AttentionTrain(keras.layers.Layer):
         Initializes the AttentionTrain layer.
 
         Args:
-            num_heads (int): Number of attention heads.
-            head_dims (int): Dimensionality of each attention head.
-            dropout (float): Dropout rate. Default is 0.2.
-            input_len (int): Length of the input sequence. Default is 64.
+        - num_heads (int): Number of attention heads.
+        - head_dims (int): Dimensionality of each attention head.
+        - dropout (float): Dropout rate. Default is 0.2.
+        - input_len (int): Length of the input sequence. Default is 64.
         """
         super().__init__()
         self.num_heads = num_heads
@@ -100,10 +100,10 @@ class AttentionTrain(keras.layers.Layer):
         Executes the forward pass of the AttentionTrain layer.
 
         Args:
-            inputs: Input tensor.
+        - inputs: Input tensor.
 
         Returns:
-            tf.Tensor: Output tensor.
+        - keras.Tensor: Output tensor.
         """
         k = self.k(inputs)
         q = self.q(inputs)

@@ -9,20 +9,21 @@ class Decoder(keras.layers.Layer):
     the output sequence based on the encoded input sequence and previously generated output tokens.
 
     Parameters:
-        dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
-        num_heads (int): Number of attention heads. Default is 32.
-        head_dims (int): Dimensionality of each attention head. Default is 40.
-        fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
-        input_len (int): Length of the input sequence. Default is 64.
+    - dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
+    - num_heads (int): Number of attention heads. Default is 32.
+    - head_dims (int): Dimensionality of each attention head. Default is 40.
+    - fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
+    - input_len (int): Length of the input sequence. Default is 64.
+    
+    References:
+        - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
 
     Example:
-        ```
+        ```python
         >>> decoder = Decoder()
         >>> output = decoder(keras.ops.ones((1, 10, 1280)
         >>> print(output)
         ```
-    References:
-        - Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
     """
 
     def __init__(self, dropout_rate=0.2, num_heads=32, head_dims=40, fc_dim_factor=5, input_len=64):
@@ -30,11 +31,11 @@ class Decoder(keras.layers.Layer):
         Initializes the Decoder layer.
 
         Args:
-            dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
-            num_heads (int): Number of attention heads. Default is 32.
-            head_dims (int): Dimensionality of each attention head. Default is 40.
-            fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
-            input_len (int): Length of the input sequence. Default is 64.
+        - dropout_rate (float): Dropout rate applied to the outputs of each sub-layer. Default is 0.2.
+        - num_heads (int): Number of attention heads. Default is 32.
+        - head_dims (int): Dimensionality of each attention head. Default is 40.
+        - fc_dim_factor (int): Factor controlling the dimensionality of the fully connected layers. Default is 5.
+        - input_len (int): Length of the input sequence. Default is 64.
         """
         super().__init__()
 
@@ -64,10 +65,10 @@ class Decoder(keras.layers.Layer):
         Executes the forward pass of the Decoder layer.
 
         Args:
-            inputs: Input tensor.
+        - inputs: Input tensor.
 
         Returns:
-            tf.Tensor: Output tensor.
+        - keras.Tensor: Output tensor.
         """
         x = inputs
         x = self.attn(x)

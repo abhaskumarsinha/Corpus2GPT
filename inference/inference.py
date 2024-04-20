@@ -17,6 +17,20 @@ class Generative_inference:
          ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  Hello WorldAr things sayingWhen ruby...
         ```
     
+    Attributes:
+        model: A Keras model used for text generation.
+        tokenizer: Tokenizer used to encode and decode text.
+        search_strategy: Strategy used for searching tokens during generation. Default is `random_sampling_strategy`.
+        prompt (str): The initial prompt for text generation. Default is "Hello World".
+        input_len (int): Length of the input tokens. Default is 64.
+        padding_token (int): Token used for padding. Default is 0.
+
+    Methods:
+        __init__(self, model, tokenizer, search_strategy=random_sampling_strategy, prompt="Hello World", input_len=64, padding_token=0, **kwargs):
+            Constructor for Generative_inference class.
+        
+        generate(self, prompt=None, generate_limit=50, **kwargs):
+            Generate text based on the provided prompt.
     """
     def __init__(self,
                  model,

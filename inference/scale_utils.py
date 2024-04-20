@@ -131,25 +131,25 @@ def estimate_optimal_ratios_from_flops(flop_list,
     Estimates optimal ratios of various model parameters based on FLOP count.
 
     Args:
-        flop_list (list): List of FLOP counts to estimate optimal ratios for.
-        input_len (int): Length of the input sequence.
-        num_heads (tuple): Tuple containing the minimum and maximum values for the number of attention heads.
-        head_dims (tuple): Tuple containing the minimum and maximum values for the dimensionality of attention heads.
-        num_decoders (int): Number of decoder layers.
-        fc_dim_factor (int): Factor to determine the dimensionality of fully connected layers.
-        vocab_size (int): Size of the vocabulary.
-        dropout_rate (float): Dropout rate.
-        x_train (numpy.ndarray): Training input data.
-        y_train (numpy.ndarray): Training target data.
-        trials_per_flop (int, optional): Number of trials per FLOP count. Defaults to 2.
-        batch_size (int, optional): Batch size for training. Defaults to 32.
+    - flop_list (list): List of FLOP counts to estimate optimal ratios for.
+    - input_len (int): Length of the input sequence.
+    - num_heads (tuple): Tuple containing the minimum and maximum values for the number of attention heads.
+    - head_dims (tuple): Tuple containing the minimum and maximum values for the dimensionality of attention heads.
+    - num_decoders (int): Number of decoder layers.
+    - fc_dim_factor (int): Factor to determine the dimensionality of fully connected layers.
+    - vocab_size (int): Size of the vocabulary.
+    - dropout_rate (float): Dropout rate.
+    - x_train (numpy.ndarray): Training input data.
+    - y_train (numpy.ndarray): Training target data.
+    - trials_per_flop (int, optional): Number of trials per FLOP count. Defaults to 2.
+    - batch_size (int, optional): Batch size for training. Defaults to 32.
 
     Warning:
-        **The `estimate_optimal_ratios_from_flops` is currently in the experimental phase
+    - **The `estimate_optimal_ratios_from_flops` is currently in the experimental phase
         and hasn't been tested thoroughly. It could lead to bugs!**
 
     Returns:
-        tuple: Tuple containing loss history, FLOP history, and number of parameters for each trial.
+    - tuple: Tuple containing loss history, FLOP history, and number of parameters for each trial.
     """
 
     loss_history = []

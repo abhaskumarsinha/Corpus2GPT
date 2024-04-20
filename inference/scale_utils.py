@@ -18,11 +18,11 @@ def normalize_list(numbers):
         
         where,
         
-            $x_{min}$ is the smallest value of all $x_i$
-            
-            $x_{max}$ is the largest value of all $x_i$
-            
-            for all valid $i$.
+        $x_{min}$ is the smallest value of all $x_i$
+        
+        $x_{max}$ is the largest value of all $x_i$
+        
+        for all valid $i$.
     """
     min_val = min(numbers)
     max_val = max(numbers)

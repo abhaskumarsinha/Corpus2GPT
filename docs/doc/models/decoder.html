@@ -67,6 +67,7 @@
     </ul>
 
 
+            <footer>Copyrights © 2024 Abhas Kumar Sinha. All rights reserved.</footer>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -89,7 +90,7 @@
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">Decoder</span><wbr>(<span class="base">keras.src.layers.layer.Layer</span>):
+    <span class="name">Decoder</span><wbr>(<span class="base">keras.src.engine.base_layer.Layer</span>):
 
         
     </div>
@@ -177,40 +178,64 @@ the output sequence based on the encoded input sequence and previously generated
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt>keras.src.layers.layer.Layer</dt>
-                                <dd id="Decoder.get_build_config" class="function">get_build_config</dd>
-                <dd id="Decoder.build_from_config" class="function">build_from_config</dd>
-                <dd id="Decoder.add_variable" class="function">add_variable</dd>
+                                    <div><dt>keras.src.engine.base_layer.Layer</dt>
+                                <dd id="Decoder.build" class="function">build</dd>
                 <dd id="Decoder.add_weight" class="function">add_weight</dd>
+                <dd id="Decoder.get_config" class="function">get_config</dd>
+                <dd id="Decoder.from_config" class="function">from_config</dd>
+                <dd id="Decoder.compute_output_shape" class="function">compute_output_shape</dd>
+                <dd id="Decoder.compute_output_signature" class="function">compute_output_signature</dd>
+                <dd id="Decoder.compute_mask" class="function">compute_mask</dd>
+                <dd id="Decoder.dtype" class="variable">dtype</dd>
+                <dd id="Decoder.name" class="variable">name</dd>
+                <dd id="Decoder.supports_masking" class="variable">supports_masking</dd>
+                <dd id="Decoder.dynamic" class="variable">dynamic</dd>
                 <dd id="Decoder.trainable" class="variable">trainable</dd>
+                <dd id="Decoder.activity_regularizer" class="variable">activity_regularizer</dd>
+                <dd id="Decoder.input_spec" class="variable">input_spec</dd>
+                <dd id="Decoder.trainable_weights" class="variable">trainable_weights</dd>
+                <dd id="Decoder.non_trainable_weights" class="variable">non_trainable_weights</dd>
+                <dd id="Decoder.weights" class="variable">weights</dd>
+                <dd id="Decoder.losses" class="variable">losses</dd>
+                <dd id="Decoder.add_loss" class="function">add_loss</dd>
+                <dd id="Decoder.metrics" class="variable">metrics</dd>
+                <dd id="Decoder.add_metric" class="function">add_metric</dd>
+                <dd id="Decoder.add_update" class="function">add_update</dd>
+                <dd id="Decoder.set_weights" class="function">set_weights</dd>
+                <dd id="Decoder.get_weights" class="function">get_weights</dd>
+                <dd id="Decoder.finalize_state" class="function">finalize_state</dd>
+                <dd id="Decoder.get_input_mask_at" class="function">get_input_mask_at</dd>
+                <dd id="Decoder.get_output_mask_at" class="function">get_output_mask_at</dd>
+                <dd id="Decoder.input_mask" class="variable">input_mask</dd>
+                <dd id="Decoder.output_mask" class="variable">output_mask</dd>
+                <dd id="Decoder.get_input_shape_at" class="function">get_input_shape_at</dd>
+                <dd id="Decoder.get_output_shape_at" class="function">get_output_shape_at</dd>
+                <dd id="Decoder.get_input_at" class="function">get_input_at</dd>
+                <dd id="Decoder.get_output_at" class="function">get_output_at</dd>
+                <dd id="Decoder.input" class="variable">input</dd>
+                <dd id="Decoder.output" class="variable">output</dd>
+                <dd id="Decoder.input_shape" class="variable">input_shape</dd>
+                <dd id="Decoder.count_params" class="function">count_params</dd>
+                <dd id="Decoder.output_shape" class="variable">output_shape</dd>
+                <dd id="Decoder.dtype_policy" class="variable">dtype_policy</dd>
+                <dd id="Decoder.compute_dtype" class="variable">compute_dtype</dd>
+                <dd id="Decoder.variable_dtype" class="variable">variable_dtype</dd>
+                <dd id="Decoder.inbound_nodes" class="variable">inbound_nodes</dd>
+                <dd id="Decoder.outbound_nodes" class="variable">outbound_nodes</dd>
                 <dd id="Decoder.variables" class="variable">variables</dd>
                 <dd id="Decoder.trainable_variables" class="variable">trainable_variables</dd>
                 <dd id="Decoder.non_trainable_variables" class="variable">non_trainable_variables</dd>
-                <dd id="Decoder.weights" class="variable">weights</dd>
-                <dd id="Decoder.trainable_weights" class="variable">trainable_weights</dd>
-                <dd id="Decoder.non_trainable_weights" class="variable">non_trainable_weights</dd>
-                <dd id="Decoder.metrics" class="variable">metrics</dd>
-                <dd id="Decoder.metrics_variables" class="variable">metrics_variables</dd>
-                <dd id="Decoder.get_weights" class="function">get_weights</dd>
-                <dd id="Decoder.set_weights" class="function">set_weights</dd>
-                <dd id="Decoder.dtype" class="variable">dtype</dd>
-                <dd id="Decoder.compute_dtype" class="variable">compute_dtype</dd>
-                <dd id="Decoder.variable_dtype" class="variable">variable_dtype</dd>
-                <dd id="Decoder.input_dtype" class="variable">input_dtype</dd>
-                <dd id="Decoder.supports_masking" class="variable">supports_masking</dd>
-                <dd id="Decoder.stateless_call" class="function">stateless_call</dd>
-                <dd id="Decoder.add_loss" class="function">add_loss</dd>
-                <dd id="Decoder.losses" class="variable">losses</dd>
+                <dd id="Decoder.add_variable" class="function">add_variable</dd>
+                <dd id="Decoder.get_build_config" class="function">get_build_config</dd>
+                <dd id="Decoder.build_from_config" class="function">build_from_config</dd>
                 <dd id="Decoder.save_own_variables" class="function">save_own_variables</dd>
                 <dd id="Decoder.load_own_variables" class="function">load_own_variables</dd>
-                <dd id="Decoder.count_params" class="function">count_params</dd>
-                <dd id="Decoder.get_config" class="function">get_config</dd>
 
             </div>
-            <div><dt>keras.src.ops.operation.Operation</dt>
-                                <dd id="Decoder.from_config" class="function">from_config</dd>
-                <dd id="Decoder.input" class="variable">input</dd>
-                <dd id="Decoder.output" class="variable">output</dd>
+            <div><dt>tensorflow.python.module.module.Module</dt>
+                                <dd id="Decoder.name_scope" class="variable">name_scope</dd>
+                <dd id="Decoder.submodules" class="variable">submodules</dd>
+                <dd id="Decoder.with_name_scope" class="function">with_name_scope</dd>
 
             </div>
                                 </dl>

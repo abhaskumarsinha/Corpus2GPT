@@ -67,6 +67,7 @@
     </ul>
 
 
+            <footer>Copyrights © 2024 Abhas Kumar Sinha. All rights reserved.</footer>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -89,7 +90,7 @@
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">TokenAndPositionEmbedding</span><wbr>(<span class="base">keras.src.layers.layer.Layer</span>):
+    <span class="name">TokenAndPositionEmbedding</span><wbr>(<span class="base">keras.src.engine.base_layer.Layer</span>):
 
         
     </div>
@@ -171,40 +172,64 @@ to provide input embeddings for Transformer models.</p>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt>keras.src.layers.layer.Layer</dt>
-                                <dd id="TokenAndPositionEmbedding.get_build_config" class="function">get_build_config</dd>
-                <dd id="TokenAndPositionEmbedding.build_from_config" class="function">build_from_config</dd>
-                <dd id="TokenAndPositionEmbedding.add_variable" class="function">add_variable</dd>
+                                    <div><dt>keras.src.engine.base_layer.Layer</dt>
+                                <dd id="TokenAndPositionEmbedding.build" class="function">build</dd>
                 <dd id="TokenAndPositionEmbedding.add_weight" class="function">add_weight</dd>
+                <dd id="TokenAndPositionEmbedding.get_config" class="function">get_config</dd>
+                <dd id="TokenAndPositionEmbedding.from_config" class="function">from_config</dd>
+                <dd id="TokenAndPositionEmbedding.compute_output_shape" class="function">compute_output_shape</dd>
+                <dd id="TokenAndPositionEmbedding.compute_output_signature" class="function">compute_output_signature</dd>
+                <dd id="TokenAndPositionEmbedding.compute_mask" class="function">compute_mask</dd>
+                <dd id="TokenAndPositionEmbedding.dtype" class="variable">dtype</dd>
+                <dd id="TokenAndPositionEmbedding.name" class="variable">name</dd>
+                <dd id="TokenAndPositionEmbedding.supports_masking" class="variable">supports_masking</dd>
+                <dd id="TokenAndPositionEmbedding.dynamic" class="variable">dynamic</dd>
                 <dd id="TokenAndPositionEmbedding.trainable" class="variable">trainable</dd>
+                <dd id="TokenAndPositionEmbedding.activity_regularizer" class="variable">activity_regularizer</dd>
+                <dd id="TokenAndPositionEmbedding.input_spec" class="variable">input_spec</dd>
+                <dd id="TokenAndPositionEmbedding.trainable_weights" class="variable">trainable_weights</dd>
+                <dd id="TokenAndPositionEmbedding.non_trainable_weights" class="variable">non_trainable_weights</dd>
+                <dd id="TokenAndPositionEmbedding.weights" class="variable">weights</dd>
+                <dd id="TokenAndPositionEmbedding.losses" class="variable">losses</dd>
+                <dd id="TokenAndPositionEmbedding.add_loss" class="function">add_loss</dd>
+                <dd id="TokenAndPositionEmbedding.metrics" class="variable">metrics</dd>
+                <dd id="TokenAndPositionEmbedding.add_metric" class="function">add_metric</dd>
+                <dd id="TokenAndPositionEmbedding.add_update" class="function">add_update</dd>
+                <dd id="TokenAndPositionEmbedding.set_weights" class="function">set_weights</dd>
+                <dd id="TokenAndPositionEmbedding.get_weights" class="function">get_weights</dd>
+                <dd id="TokenAndPositionEmbedding.finalize_state" class="function">finalize_state</dd>
+                <dd id="TokenAndPositionEmbedding.get_input_mask_at" class="function">get_input_mask_at</dd>
+                <dd id="TokenAndPositionEmbedding.get_output_mask_at" class="function">get_output_mask_at</dd>
+                <dd id="TokenAndPositionEmbedding.input_mask" class="variable">input_mask</dd>
+                <dd id="TokenAndPositionEmbedding.output_mask" class="variable">output_mask</dd>
+                <dd id="TokenAndPositionEmbedding.get_input_shape_at" class="function">get_input_shape_at</dd>
+                <dd id="TokenAndPositionEmbedding.get_output_shape_at" class="function">get_output_shape_at</dd>
+                <dd id="TokenAndPositionEmbedding.get_input_at" class="function">get_input_at</dd>
+                <dd id="TokenAndPositionEmbedding.get_output_at" class="function">get_output_at</dd>
+                <dd id="TokenAndPositionEmbedding.input" class="variable">input</dd>
+                <dd id="TokenAndPositionEmbedding.output" class="variable">output</dd>
+                <dd id="TokenAndPositionEmbedding.input_shape" class="variable">input_shape</dd>
+                <dd id="TokenAndPositionEmbedding.count_params" class="function">count_params</dd>
+                <dd id="TokenAndPositionEmbedding.output_shape" class="variable">output_shape</dd>
+                <dd id="TokenAndPositionEmbedding.dtype_policy" class="variable">dtype_policy</dd>
+                <dd id="TokenAndPositionEmbedding.compute_dtype" class="variable">compute_dtype</dd>
+                <dd id="TokenAndPositionEmbedding.variable_dtype" class="variable">variable_dtype</dd>
+                <dd id="TokenAndPositionEmbedding.inbound_nodes" class="variable">inbound_nodes</dd>
+                <dd id="TokenAndPositionEmbedding.outbound_nodes" class="variable">outbound_nodes</dd>
                 <dd id="TokenAndPositionEmbedding.variables" class="variable">variables</dd>
                 <dd id="TokenAndPositionEmbedding.trainable_variables" class="variable">trainable_variables</dd>
                 <dd id="TokenAndPositionEmbedding.non_trainable_variables" class="variable">non_trainable_variables</dd>
-                <dd id="TokenAndPositionEmbedding.weights" class="variable">weights</dd>
-                <dd id="TokenAndPositionEmbedding.trainable_weights" class="variable">trainable_weights</dd>
-                <dd id="TokenAndPositionEmbedding.non_trainable_weights" class="variable">non_trainable_weights</dd>
-                <dd id="TokenAndPositionEmbedding.metrics" class="variable">metrics</dd>
-                <dd id="TokenAndPositionEmbedding.metrics_variables" class="variable">metrics_variables</dd>
-                <dd id="TokenAndPositionEmbedding.get_weights" class="function">get_weights</dd>
-                <dd id="TokenAndPositionEmbedding.set_weights" class="function">set_weights</dd>
-                <dd id="TokenAndPositionEmbedding.dtype" class="variable">dtype</dd>
-                <dd id="TokenAndPositionEmbedding.compute_dtype" class="variable">compute_dtype</dd>
-                <dd id="TokenAndPositionEmbedding.variable_dtype" class="variable">variable_dtype</dd>
-                <dd id="TokenAndPositionEmbedding.input_dtype" class="variable">input_dtype</dd>
-                <dd id="TokenAndPositionEmbedding.supports_masking" class="variable">supports_masking</dd>
-                <dd id="TokenAndPositionEmbedding.stateless_call" class="function">stateless_call</dd>
-                <dd id="TokenAndPositionEmbedding.add_loss" class="function">add_loss</dd>
-                <dd id="TokenAndPositionEmbedding.losses" class="variable">losses</dd>
+                <dd id="TokenAndPositionEmbedding.add_variable" class="function">add_variable</dd>
+                <dd id="TokenAndPositionEmbedding.get_build_config" class="function">get_build_config</dd>
+                <dd id="TokenAndPositionEmbedding.build_from_config" class="function">build_from_config</dd>
                 <dd id="TokenAndPositionEmbedding.save_own_variables" class="function">save_own_variables</dd>
                 <dd id="TokenAndPositionEmbedding.load_own_variables" class="function">load_own_variables</dd>
-                <dd id="TokenAndPositionEmbedding.count_params" class="function">count_params</dd>
-                <dd id="TokenAndPositionEmbedding.get_config" class="function">get_config</dd>
 
             </div>
-            <div><dt>keras.src.ops.operation.Operation</dt>
-                                <dd id="TokenAndPositionEmbedding.from_config" class="function">from_config</dd>
-                <dd id="TokenAndPositionEmbedding.input" class="variable">input</dd>
-                <dd id="TokenAndPositionEmbedding.output" class="variable">output</dd>
+            <div><dt>tensorflow.python.module.module.Module</dt>
+                                <dd id="TokenAndPositionEmbedding.name_scope" class="variable">name_scope</dd>
+                <dd id="TokenAndPositionEmbedding.submodules" class="variable">submodules</dd>
+                <dd id="TokenAndPositionEmbedding.with_name_scope" class="function">with_name_scope</dd>
 
             </div>
                                 </dl>

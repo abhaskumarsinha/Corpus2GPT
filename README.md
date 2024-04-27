@@ -114,20 +114,19 @@ inference.generate("Hello World")
 ```
 
 ### Distributed Learning on TPU
-    ```python
-    # JAX backend
-    distribute_scope = get_distribution_scope("gpu")
-    with distribute_scope():
-        # Your code here
-        # e.g., build and train a model
- 
+```python
+# JAX backend
+distribute_scope = get_distribution_scope("gpu")
+with distribute_scope():
+    # Your code here
+    # e.g., build and train a model
 
-    # TensorFlow backend
-    distribute_scope = get_distribution_scope("tpu")
-    with distribute_scope():
-        # Your code here
-        # e.g., build and train a model
-    ```
+# TensorFlow backend
+distribute_scope = get_distribution_scope("tpu")
+with distribute_scope():
+    # Your code here
+    # e.g., build and train a model
+```
 
 
 ## Contributions are Welcome!

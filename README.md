@@ -2,6 +2,9 @@
 
 ![Apache 2.0](https://badgen.net/static/license/Apache%202.0/blue) ![Keras 3.1](https://badgen.net/static/Keras/3.1/orange) ![Build: Pass](https://badgen.net/static/build/pass/f2a)
 
+![C2G_logo](https://github.com/abhaskumarsinha/Corpus2GPT/assets/31654395/80181c4f-e898-4345-9768-b1021776ebda)
+
+
 # Corpus2GPT
 Corpus2GPT: A project enabling users to train their own GPT models on diverse datasets, including local languages and various corpus types, using Keras and compatible with TensorFlow, PyTorch, or JAX backends for subsequent storage or sharing.
 

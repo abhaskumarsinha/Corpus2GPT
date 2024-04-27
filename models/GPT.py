@@ -153,7 +153,8 @@ def build_GPT(input_len,
               num_heads,
               head_dims,
               fc_dim_factor,
-              optimizer='adam'
+              epsilon,
+              optimizer='adam',
               ):
     """
     Builds a GPT (Generative Pre-trained Transformer) model.
@@ -168,6 +169,7 @@ def build_GPT(input_len,
     - head_dims (int): The dimensionality of each attention head.
     - fc_dim_factor (int): The factor to determine the dimensionality
                              of the feedforward network within each decoder layer.
+    - epsilon (float): The epsilon value to be used during normalization.
     - optimizer (str, optional): The optimizer to use for training. 
                                    Defaults to 'adam'.
 
@@ -192,7 +194,7 @@ def build_GPT(input_len,
     GPT.add(keras.Input(shape=(input_len,)))
     GPT.add(TokenAndPositionEmbedding(input_len, vocab_size, embed_dim))
     for _ in range(num_decoders):
-        GPT.add(Decoder(dropout_rate, num_heads, head_dims, fc_dim_factor, input_len))
+        GPT.add(Decoder(dropout_rate, num_heads, head_dims, fc_dim_factor, input_len, epsilon))
     GPT.add(keras.layers.Dense(vocab_size + 1))
 
     loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)

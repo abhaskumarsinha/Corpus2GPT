@@ -44,7 +44,8 @@ Corpus2GPT is a pioneering project designed to empower users in training their o
 Random Sampling Search Strategies: Corpus2GPT implements random sampling search strategies, enabling users to generate diverse outputs during model inference.
 - **Multiple Language Support**: With built-in support for multiple languages, Corpus2GPT facilitates training language models on diverse linguistic datasets, fostering inclusivity and accessibility.
 - **Sentence Piece Tokenizer (and Vectorizer)**: Leveraging Sentence Piece Tokenizer and Vectorizer, Corpus2GPT offers efficient tokenization and vectorization of input data, crucial for preprocessing textual data in various languages and domains.
-GPT Builder: Corpus2GPT provides a streamlined interface for building GPT models, simplifying the process of configuring and training custom language models.
+- **GPT Builder**: Corpus2GPT provides a streamlined interface for building GPT models, simplifying the process of configuring and training custom language models.
+- **Distributed Training Utilities**: Tools to perform distributed learning at ease for JAX and TensorFlow backends (includes support for CPU, GPU and TPU).
 
 ## Upcoming Features:
 

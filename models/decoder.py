@@ -26,7 +26,7 @@ class Decoder(keras.layers.Layer):
         ```
     """
 
-    def __init__(self, dropout_rate=0.2, num_heads=32, head_dims=40, fc_dim_factor=5, input_len=64):
+    def __init__(self, dropout_rate=0.2, num_heads=32, head_dims=40, fc_dim_factor=5, input_len=64, epsilon=1e-9):
         """
         Initializes the Decoder layer.
 
@@ -40,10 +40,10 @@ class Decoder(keras.layers.Layer):
         super().__init__()
 
         # Layer Normalization for the first sub-layer
-        self.norm1 = keras.layers.LayerNormalization(epsilon=1e-9)
+        self.norm1 = keras.layers.LayerNormalization(epsilon=epsilon)
 
         # Layer Normalization for the second sub-layer
-        self.norm2 = keras.layers.LayerNormalization(epsilon=1e-9)
+        self.norm2 = keras.layers.LayerNormalization(epsilon=epsilon)
 
         # Attention mechanism
         self.attn = AttentionTrain(head_dims=head_dims, num_heads=num_heads, dropout=dropout_rate, input_len=input_len)

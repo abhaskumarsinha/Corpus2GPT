@@ -13,12 +13,29 @@ def get_distribution_scope(device_type):
     for the code executed within the context manager.
 
     Args:
-        device_type (str): The type of device to use for distributed training. Can be 'cpu', 'gpu', or 'tpu'.
+    - device_type (str): The type of device to use for distributed training. Can be 'cpu', 'gpu', or 'tpu'.
 
     Returns:
-        A context manager object that can be used to execute code in a distributed environment.
+    - A context manager object that can be used to execute code in a distributed environment.
+
+    
+    Notes:
+    -   For the JAX backend, this function uses the `jax.distribution` module to create a `DataParallel` distribution
+        for GPU devices. For more information, see the Keras guide on distributed training with JAX:
+        https://keras.io/guides/distribution/
+
+    -   For the TensorFlow backend, this function uses the appropriate distribution strategy based on the device type:
+            - For CPU and GPU, it uses `tf.distribute.MirroredStrategy`
+            - For TPU, it uses `tf.distribute.TPUStrategy`
+
+    -    For more information on distributed training with TensorFlow, see the TensorFlow guide:
+         https://www.tensorflow.org/guide/distributed_training
+
+    Raises:
+    - ValueError: If an unsupported device type or backend is provided.
 
     Examples:
+        ```python
         # JAX backend
         distribute_scope = get_distribution_scope("gpu")
         with distribute_scope():
@@ -30,21 +47,7 @@ def get_distribution_scope(device_type):
         with distribute_scope():
             # Your code here
             # e.g., build and train a model
-
-    Notes:
-        For the JAX backend, this function uses the `jax.distribution` module to create a `DataParallel` distribution
-        for GPU devices. For more information, see the Keras guide on distributed training with JAX:
-        https://keras.io/guides/distribution/
-
-        For the TensorFlow backend, this function uses the appropriate distribution strategy based on the device type:
-            - For CPU and GPU, it uses `tf.distribute.MirroredStrategy`
-            - For TPU, it uses `tf.distribute.TPUStrategy`
-
-        For more information on distributed training with TensorFlow, see the TensorFlow guide:
-        https://www.tensorflow.org/guide/distributed_training
-
-    Raises:
-        ValueError: If an unsupported device type or backend is provided.
+        ```
     """
     try:
         backend = os.environ.get("KERAS_BACKEND", "")

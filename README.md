@@ -1,6 +1,6 @@
 [[`Corpus2GPT`](https://abhaskumarsinha.github.io/Corpus2GPT/)] [[`Docs`](https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/index.html)] [[`Ragdoll`](https://huggingface.co/spaces/abhaskumarsinha/Ragdoll)] [[`Keras`](https://www.github.com/keras-team/keras/)]
 
-![Apache 2.0](https://badgen.net/static/license/Apache%202.0/blue) ![Keras 3.1](https://badgen.net/static/Keras/3.1/orange) !(Build: Pass)[https://badgen.net/static/build/pass/f2a]
+![Apache 2.0](https://badgen.net/static/license/Apache%202.0/blue) ![Keras 3.1](https://badgen.net/static/Keras/3.1/orange) ![Build: Pass](https://badgen.net/static/build/pass/f2a)
 
 # Corpus2GPT
 Corpus2GPT: A project enabling users to train their own GPT models on diverse datasets, including local languages and various corpus types, using Keras and compatible with TensorFlow, PyTorch, or JAX backends for subsequent storage or sharing.

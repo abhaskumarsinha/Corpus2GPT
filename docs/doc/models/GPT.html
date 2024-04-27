@@ -73,7 +73,7 @@
     </ul>
 
 
-            <footer>Copyrights © 2024 Abhas Kumar Sinha. All rights reserved.</footer>
+            <footer>Copyrights (c) 2024 Abhas Kumar Sinha, Corpus2GPT</footer>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -118,7 +118,7 @@ paper Appendix F as reference: <a href="https://arxiv.org/pdf/2203.15556.pdf">ht
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">GPT</span><wbr>(<span class="base">keras.src.engine.base_layer.Layer</span>):
+    <span class="name">GPT</span><wbr>(<span class="base">keras.src.layers.layer.Layer</span>):
 
         
     </div>
@@ -234,64 +234,40 @@ by a linear mapping head for language modeling.</p>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt>keras.src.engine.base_layer.Layer</dt>
-                                <dd id="GPT.build" class="function">build</dd>
+                                    <div><dt>keras.src.layers.layer.Layer</dt>
+                                <dd id="GPT.get_build_config" class="function">get_build_config</dd>
+                <dd id="GPT.build_from_config" class="function">build_from_config</dd>
+                <dd id="GPT.add_variable" class="function">add_variable</dd>
                 <dd id="GPT.add_weight" class="function">add_weight</dd>
-                <dd id="GPT.get_config" class="function">get_config</dd>
-                <dd id="GPT.from_config" class="function">from_config</dd>
-                <dd id="GPT.compute_output_shape" class="function">compute_output_shape</dd>
-                <dd id="GPT.compute_output_signature" class="function">compute_output_signature</dd>
-                <dd id="GPT.compute_mask" class="function">compute_mask</dd>
-                <dd id="GPT.dtype" class="variable">dtype</dd>
-                <dd id="GPT.name" class="variable">name</dd>
-                <dd id="GPT.supports_masking" class="variable">supports_masking</dd>
-                <dd id="GPT.dynamic" class="variable">dynamic</dd>
                 <dd id="GPT.trainable" class="variable">trainable</dd>
-                <dd id="GPT.activity_regularizer" class="variable">activity_regularizer</dd>
-                <dd id="GPT.input_spec" class="variable">input_spec</dd>
-                <dd id="GPT.trainable_weights" class="variable">trainable_weights</dd>
-                <dd id="GPT.non_trainable_weights" class="variable">non_trainable_weights</dd>
-                <dd id="GPT.weights" class="variable">weights</dd>
-                <dd id="GPT.losses" class="variable">losses</dd>
-                <dd id="GPT.add_loss" class="function">add_loss</dd>
-                <dd id="GPT.metrics" class="variable">metrics</dd>
-                <dd id="GPT.add_metric" class="function">add_metric</dd>
-                <dd id="GPT.add_update" class="function">add_update</dd>
-                <dd id="GPT.set_weights" class="function">set_weights</dd>
-                <dd id="GPT.get_weights" class="function">get_weights</dd>
-                <dd id="GPT.finalize_state" class="function">finalize_state</dd>
-                <dd id="GPT.get_input_mask_at" class="function">get_input_mask_at</dd>
-                <dd id="GPT.get_output_mask_at" class="function">get_output_mask_at</dd>
-                <dd id="GPT.input_mask" class="variable">input_mask</dd>
-                <dd id="GPT.output_mask" class="variable">output_mask</dd>
-                <dd id="GPT.get_input_shape_at" class="function">get_input_shape_at</dd>
-                <dd id="GPT.get_output_shape_at" class="function">get_output_shape_at</dd>
-                <dd id="GPT.get_input_at" class="function">get_input_at</dd>
-                <dd id="GPT.get_output_at" class="function">get_output_at</dd>
-                <dd id="GPT.input" class="variable">input</dd>
-                <dd id="GPT.output" class="variable">output</dd>
-                <dd id="GPT.input_shape" class="variable">input_shape</dd>
-                <dd id="GPT.count_params" class="function">count_params</dd>
-                <dd id="GPT.output_shape" class="variable">output_shape</dd>
-                <dd id="GPT.dtype_policy" class="variable">dtype_policy</dd>
-                <dd id="GPT.compute_dtype" class="variable">compute_dtype</dd>
-                <dd id="GPT.variable_dtype" class="variable">variable_dtype</dd>
-                <dd id="GPT.inbound_nodes" class="variable">inbound_nodes</dd>
-                <dd id="GPT.outbound_nodes" class="variable">outbound_nodes</dd>
                 <dd id="GPT.variables" class="variable">variables</dd>
                 <dd id="GPT.trainable_variables" class="variable">trainable_variables</dd>
                 <dd id="GPT.non_trainable_variables" class="variable">non_trainable_variables</dd>
-                <dd id="GPT.add_variable" class="function">add_variable</dd>
-                <dd id="GPT.get_build_config" class="function">get_build_config</dd>
-                <dd id="GPT.build_from_config" class="function">build_from_config</dd>
+                <dd id="GPT.weights" class="variable">weights</dd>
+                <dd id="GPT.trainable_weights" class="variable">trainable_weights</dd>
+                <dd id="GPT.non_trainable_weights" class="variable">non_trainable_weights</dd>
+                <dd id="GPT.metrics" class="variable">metrics</dd>
+                <dd id="GPT.metrics_variables" class="variable">metrics_variables</dd>
+                <dd id="GPT.get_weights" class="function">get_weights</dd>
+                <dd id="GPT.set_weights" class="function">set_weights</dd>
+                <dd id="GPT.dtype" class="variable">dtype</dd>
+                <dd id="GPT.compute_dtype" class="variable">compute_dtype</dd>
+                <dd id="GPT.variable_dtype" class="variable">variable_dtype</dd>
+                <dd id="GPT.input_dtype" class="variable">input_dtype</dd>
+                <dd id="GPT.supports_masking" class="variable">supports_masking</dd>
+                <dd id="GPT.stateless_call" class="function">stateless_call</dd>
+                <dd id="GPT.add_loss" class="function">add_loss</dd>
+                <dd id="GPT.losses" class="variable">losses</dd>
                 <dd id="GPT.save_own_variables" class="function">save_own_variables</dd>
                 <dd id="GPT.load_own_variables" class="function">load_own_variables</dd>
+                <dd id="GPT.count_params" class="function">count_params</dd>
+                <dd id="GPT.get_config" class="function">get_config</dd>
 
             </div>
-            <div><dt>tensorflow.python.module.module.Module</dt>
-                                <dd id="GPT.name_scope" class="variable">name_scope</dd>
-                <dd id="GPT.submodules" class="variable">submodules</dd>
-                <dd id="GPT.with_name_scope" class="function">with_name_scope</dd>
+            <div><dt>keras.src.ops.operation.Operation</dt>
+                                <dd id="GPT.from_config" class="function">from_config</dd>
+                <dd id="GPT.input" class="variable">input</dd>
+                <dd id="GPT.output" class="variable">output</dd>
 
             </div>
                                 </dl>

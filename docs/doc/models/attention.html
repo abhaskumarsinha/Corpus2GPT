@@ -70,7 +70,7 @@
     </ul>
 
 
-            <footer>Copyrights © 2024 Abhas Kumar Sinha. All rights reserved.</footer>
+            <footer>Copyrights (c) 2024 Abhas Kumar Sinha, Corpus2GPT</footer>
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
             built with <span class="visually-hidden">pdoc</span><img
@@ -93,7 +93,7 @@
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">AttentionTrain</span><wbr>(<span class="base">keras.src.engine.base_layer.Layer</span>):
+    <span class="name">AttentionTrain</span><wbr>(<span class="base">keras.src.layers.layer.Layer</span>):
 
         
     </div>
@@ -221,64 +221,40 @@ to prevent attending to future positions.</p>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt>keras.src.engine.base_layer.Layer</dt>
-                                <dd id="AttentionTrain.build" class="function">build</dd>
+                                    <div><dt>keras.src.layers.layer.Layer</dt>
+                                <dd id="AttentionTrain.get_build_config" class="function">get_build_config</dd>
+                <dd id="AttentionTrain.build_from_config" class="function">build_from_config</dd>
+                <dd id="AttentionTrain.add_variable" class="function">add_variable</dd>
                 <dd id="AttentionTrain.add_weight" class="function">add_weight</dd>
-                <dd id="AttentionTrain.get_config" class="function">get_config</dd>
-                <dd id="AttentionTrain.from_config" class="function">from_config</dd>
-                <dd id="AttentionTrain.compute_output_shape" class="function">compute_output_shape</dd>
-                <dd id="AttentionTrain.compute_output_signature" class="function">compute_output_signature</dd>
-                <dd id="AttentionTrain.compute_mask" class="function">compute_mask</dd>
-                <dd id="AttentionTrain.dtype" class="variable">dtype</dd>
-                <dd id="AttentionTrain.name" class="variable">name</dd>
-                <dd id="AttentionTrain.supports_masking" class="variable">supports_masking</dd>
-                <dd id="AttentionTrain.dynamic" class="variable">dynamic</dd>
                 <dd id="AttentionTrain.trainable" class="variable">trainable</dd>
-                <dd id="AttentionTrain.activity_regularizer" class="variable">activity_regularizer</dd>
-                <dd id="AttentionTrain.input_spec" class="variable">input_spec</dd>
-                <dd id="AttentionTrain.trainable_weights" class="variable">trainable_weights</dd>
-                <dd id="AttentionTrain.non_trainable_weights" class="variable">non_trainable_weights</dd>
-                <dd id="AttentionTrain.weights" class="variable">weights</dd>
-                <dd id="AttentionTrain.losses" class="variable">losses</dd>
-                <dd id="AttentionTrain.add_loss" class="function">add_loss</dd>
-                <dd id="AttentionTrain.metrics" class="variable">metrics</dd>
-                <dd id="AttentionTrain.add_metric" class="function">add_metric</dd>
-                <dd id="AttentionTrain.add_update" class="function">add_update</dd>
-                <dd id="AttentionTrain.set_weights" class="function">set_weights</dd>
-                <dd id="AttentionTrain.get_weights" class="function">get_weights</dd>
-                <dd id="AttentionTrain.finalize_state" class="function">finalize_state</dd>
-                <dd id="AttentionTrain.get_input_mask_at" class="function">get_input_mask_at</dd>
-                <dd id="AttentionTrain.get_output_mask_at" class="function">get_output_mask_at</dd>
-                <dd id="AttentionTrain.input_mask" class="variable">input_mask</dd>
-                <dd id="AttentionTrain.output_mask" class="variable">output_mask</dd>
-                <dd id="AttentionTrain.get_input_shape_at" class="function">get_input_shape_at</dd>
-                <dd id="AttentionTrain.get_output_shape_at" class="function">get_output_shape_at</dd>
-                <dd id="AttentionTrain.get_input_at" class="function">get_input_at</dd>
-                <dd id="AttentionTrain.get_output_at" class="function">get_output_at</dd>
-                <dd id="AttentionTrain.input" class="variable">input</dd>
-                <dd id="AttentionTrain.output" class="variable">output</dd>
-                <dd id="AttentionTrain.input_shape" class="variable">input_shape</dd>
-                <dd id="AttentionTrain.count_params" class="function">count_params</dd>
-                <dd id="AttentionTrain.output_shape" class="variable">output_shape</dd>
-                <dd id="AttentionTrain.dtype_policy" class="variable">dtype_policy</dd>
-                <dd id="AttentionTrain.compute_dtype" class="variable">compute_dtype</dd>
-                <dd id="AttentionTrain.variable_dtype" class="variable">variable_dtype</dd>
-                <dd id="AttentionTrain.inbound_nodes" class="variable">inbound_nodes</dd>
-                <dd id="AttentionTrain.outbound_nodes" class="variable">outbound_nodes</dd>
                 <dd id="AttentionTrain.variables" class="variable">variables</dd>
                 <dd id="AttentionTrain.trainable_variables" class="variable">trainable_variables</dd>
                 <dd id="AttentionTrain.non_trainable_variables" class="variable">non_trainable_variables</dd>
-                <dd id="AttentionTrain.add_variable" class="function">add_variable</dd>
-                <dd id="AttentionTrain.get_build_config" class="function">get_build_config</dd>
-                <dd id="AttentionTrain.build_from_config" class="function">build_from_config</dd>
+                <dd id="AttentionTrain.weights" class="variable">weights</dd>
+                <dd id="AttentionTrain.trainable_weights" class="variable">trainable_weights</dd>
+                <dd id="AttentionTrain.non_trainable_weights" class="variable">non_trainable_weights</dd>
+                <dd id="AttentionTrain.metrics" class="variable">metrics</dd>
+                <dd id="AttentionTrain.metrics_variables" class="variable">metrics_variables</dd>
+                <dd id="AttentionTrain.get_weights" class="function">get_weights</dd>
+                <dd id="AttentionTrain.set_weights" class="function">set_weights</dd>
+                <dd id="AttentionTrain.dtype" class="variable">dtype</dd>
+                <dd id="AttentionTrain.compute_dtype" class="variable">compute_dtype</dd>
+                <dd id="AttentionTrain.variable_dtype" class="variable">variable_dtype</dd>
+                <dd id="AttentionTrain.input_dtype" class="variable">input_dtype</dd>
+                <dd id="AttentionTrain.supports_masking" class="variable">supports_masking</dd>
+                <dd id="AttentionTrain.stateless_call" class="function">stateless_call</dd>
+                <dd id="AttentionTrain.add_loss" class="function">add_loss</dd>
+                <dd id="AttentionTrain.losses" class="variable">losses</dd>
                 <dd id="AttentionTrain.save_own_variables" class="function">save_own_variables</dd>
                 <dd id="AttentionTrain.load_own_variables" class="function">load_own_variables</dd>
+                <dd id="AttentionTrain.count_params" class="function">count_params</dd>
+                <dd id="AttentionTrain.get_config" class="function">get_config</dd>
 
             </div>
-            <div><dt>tensorflow.python.module.module.Module</dt>
-                                <dd id="AttentionTrain.name_scope" class="variable">name_scope</dd>
-                <dd id="AttentionTrain.submodules" class="variable">submodules</dd>
-                <dd id="AttentionTrain.with_name_scope" class="function">with_name_scope</dd>
+            <div><dt>keras.src.ops.operation.Operation</dt>
+                                <dd id="AttentionTrain.from_config" class="function">from_config</dd>
+                <dd id="AttentionTrain.input" class="variable">input</dd>
+                <dd id="AttentionTrain.output" class="variable">output</dd>
 
             </div>
                                 </dl>

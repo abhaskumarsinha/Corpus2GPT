@@ -113,6 +113,23 @@ inference.generate("Hello World")
 ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  Hello WorldAr things sayingWhen ruby...
 ```
 
+### Distributed Learning on TPU
+    ```python
+    # JAX backend
+    distribute_scope = get_distribution_scope("gpu")
+    with distribute_scope():
+        # Your code here
+        # e.g., build and train a model
+ 
+
+    # TensorFlow backend
+    distribute_scope = get_distribution_scope("tpu")
+    with distribute_scope():
+        # Your code here
+        # e.g., build and train a model
+    ```
+
+
 ## Contributions are Welcome!
 
 Corpus2GPT is an open-source project, and we welcome contributions from the community to help improve and enhance the tool. Whether you're an experienced developer, a domain expert, or someone passionate about language modeling and NLP, there are many ways you can contribute.

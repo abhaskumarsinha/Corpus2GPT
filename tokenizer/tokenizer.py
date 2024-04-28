@@ -74,7 +74,7 @@ class SPM_Tokenizer:
         Returns:
         - list: A list of tokenized sequences.
         """
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
             content = file.readlines()
             content = " ".join(content).replace('\n', ' ')
             content = self.tokenizer.encode_as_ids(content)

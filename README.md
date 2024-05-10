@@ -11,6 +11,9 @@ Corpus2GPT: A project enabling users to train their own GPT models on diverse da
 
 ## Aim
 
+
+Corpus2GPT revolutionizes language model research with its unique approach, offering a user-friendly platform that prioritizes accessibility and ease of use. Unlike other existing tools with complex and cumbersome codebases, Corpus2GPT stands out for its modular design, making it effortless to navigate, modify, and understand. With comprehensive documentation and support for various language corpora, backends, and scaling solutions, it caters to a diverse range of users, from seasoned researchers to industry professionals and enthusiasts alike. Experience the future of language model exploration with Corpus2GPT—where simplicity meets innovation.
+
 Corpus2GPT is a pioneering project designed to empower users in training their own GPT models using diverse datasets, including those in local languages and various corpus types. Compatible with Keras and seamlessly supporting TensorFlow, PyTorch, or JAX backends, it stands out as one of the first tools in the field to offer this trifecta of backend options, facilitating benchmarking and flexibility for users. Beyond its initial capabilities, Corpus2GPT aspires to evolve into a comprehensive hub of language model tools, incorporating features like RAG (Retrieval-Augmented Generation) and MoEs (Mixture of Experts) in the future. With a commitment to staying at the forefront of LLM (Large Language Model) advancements, Corpus2GPT aims to become the go-to suite for both beginners and seasoned practitioners, offering accessible presets and modules for building cutting-edge language models.
 
 ## Why use Corpus2GPT?

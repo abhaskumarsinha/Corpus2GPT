@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/index.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/guides.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/inference.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/inference/inference.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/inference/scale_utils.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/inference/sampling_strategies.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/inference/sampling_strategies/sample_random.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/models.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/models/GPT.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/models/attention.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/models/decoder.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/models/embeddings.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/requirements.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/tokenizer.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/tokenizer/tokenizer.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/training_utils.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/utils.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/utils/config.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/utils/utils.html</loc>
+  <lastmod>2024-05-10T07:48:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

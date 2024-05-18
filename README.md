@@ -139,6 +139,26 @@ with distribute_scope():
 
 Corpus2GPT is an open-source project, and we welcome contributions from the community to help improve and enhance the tool. Whether you're an experienced developer, a domain expert, or someone passionate about language modeling and NLP, there are many ways you can contribute.
 
+## Citations
+
+Corpus2GPT by Abhas Kumar Sinha, 2024
+
+If you found this code useful, please cite the following Repository:
+
+Abhas Kumar Sinha. **"Corpus2GPT"** *Repo (2024).*
+
+    @article{sinha2024corpus2gpt,
+      title={Corpus2GPT},
+      author={Sinha, Abhas Kumar},
+      journal={GitHub Repository},
+      year={2024}
+    }
+
+## License
+
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+
 
 
 

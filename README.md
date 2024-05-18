@@ -145,7 +145,7 @@ Corpus2GPT by Abhas Kumar Sinha, 2024
 
 If you found this code useful, please cite the following Repository:
 
-Abhas Kumar Sinha. **"Corpus2GPT"** *Repo (2024).*
+Abhas Kumar Sinha. **"Corpus2GPT"** *GitHub Repository (2024).*
 
     @article{sinha2024corpus2gpt,
       title={Corpus2GPT},

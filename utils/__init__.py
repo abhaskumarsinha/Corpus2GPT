@@ -21,10 +21,10 @@ Usage examples for the classes and functions provided in this module.
 
 """
 
-from .config import _C2G_CONFIG, register_module
-from .utils import BASE_C2G
+from Corpus2GPT.utils.config import _C2G_CONFIG, register_module
+from Corpus2GPT.utils.utils import BASE_C2G
 
 
 
-from .config import *
-from .utils import *
+from Corpus2GPT.utils.config import *
+from Corpus2GPT.utils.utils import *

@@ -1,8 +1,8 @@
 import keras
-from tokenizer.tokenizer import *
-from models.attention import *
-from models.decoder import *
-from models.embeddings import *
+from Corpus2GPT.tokenizer.tokenizer import *
+from Corpus2GPT.models.attention import *
+from Corpus2GPT.models.decoder import *
+from Corpus2GPT.models.embeddings import *
 
 def FLOP(input_len, vocab_size, embed_dim, num_heads, num_decoders, fc_dim_factor):
     """ 

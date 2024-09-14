@@ -7,4 +7,4 @@ Submodules:
 - tokenizer: Contains functions and utilities for text tokenization.
 """
 
-from tokenizer.tokenizer import *
+from Corpus2GPT.tokenizer.tokenizer import *

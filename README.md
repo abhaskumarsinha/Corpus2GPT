@@ -136,7 +136,7 @@ with distribute_scope():
     # e.g., build and train a model
 ```
 
-```
+```python
 dataset = LanguagePairDataset()
 
 # Create vocab for the first and second languages

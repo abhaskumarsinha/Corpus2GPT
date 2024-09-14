@@ -1,6 +1,6 @@
 import keras
 import numpy as np
-from .sampling_strategies.sample_random import *
+from Corpus2GPT.inference.sampling_strategies.sample_random import *
 
 class Generative_inference:
     """ 

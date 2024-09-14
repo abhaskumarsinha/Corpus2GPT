@@ -1,5 +1,5 @@
 import numpy as np
-from models.GPT import build_GPT
+from Corpus2GPT.models.GPT import build_GPT
 
 # Utils to work with estimation functions
 

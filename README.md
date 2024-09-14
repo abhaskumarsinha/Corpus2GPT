@@ -136,6 +136,7 @@ with distribute_scope():
     # e.g., build and train a model
 ```
 
+### Generating and Writing Synthetic Translation Dataset
 ```python
 dataset = LanguagePairDataset()
 

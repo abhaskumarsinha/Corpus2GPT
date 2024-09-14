@@ -52,6 +52,8 @@ Random Sampling Search Strategies: Corpus2GPT implements random sampling search 
 - **Sentence Piece Tokenizer (and Vectorizer)**: Leveraging Sentence Piece Tokenizer and Vectorizer, Corpus2GPT offers efficient tokenization and vectorization of input data, crucial for preprocessing textual data in various languages and domains.
 - **GPT Builder**: Corpus2GPT provides a streamlined interface for building GPT models, simplifying the process of configuring and training custom language models.
 - **Distributed Training Utilities**: Tools to perform distributed learning at ease for JAX and TensorFlow backends (includes support for CPU, GPU and TPU).
+- **Custom Synthetic Translation Dataset Generator**: Corpus2GPT now includes a generator for synthetic language pairs, which creates vocabularies for different languages and maps them for translation tasks. This feature allows users to simulate language translation datasets, generating random sentence pairs in one language and their translations in another, making it easier to train and test translation models on diverse synthetic datasets.
+
 
 ## Upcoming Features:
 
@@ -132,6 +134,25 @@ distribute_scope = get_distribution_scope("tpu")
 with distribute_scope():
     # Your code here
     # e.g., build and train a model
+```
+
+```
+dataset = LanguagePairDataset()
+
+# Create vocab for the first and second languages
+dataset.create_vocabs(10, 3)  # First language
+dataset.create_vocabs(10, 3)  # Second language
+
+# Create a map between the first and second languages
+map_dict, reverse_dict = dataset.create_map(0, 1)
+
+# Write 5 sentence pairs to a file (append mode: True)
+dataset.write_dataset_to_file(map_dict, reverse_dict, max_len=3, n=5, file_path='dataset.txt', append=False)
+
+# Overwrite file with new 5 pairs (append mode: False)
+dataset.write_dataset_to_file(map_dict, reverse_dict, max_len=3, n=5, file_path='dataset.txt', append=True)
+
+print("Dataset written to 'dataset.txt'")
 ```
 
 

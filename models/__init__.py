@@ -10,7 +10,7 @@ Submodules:
 - embeddings: Contains modules for handling embeddings in neural network models.
 """
 
-from models.GPT import *
-from models.attention import *
-from models.decoder import *
-from models.embeddings import *
+from Corpus2GPT.models.GPT import *
+from Corpus2GPT.models.attention import *
+from Corpus2GPT.models.decoder import *
+from Corpus2GPT.models.embeddings import *

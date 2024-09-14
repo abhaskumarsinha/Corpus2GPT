@@ -9,6 +9,6 @@ Usage:
     To use the `get_distribution_scope` function, first set the `KERAS_BACKEND` environment variable to either `'jax'` or `'tensorflow'`. Then, call the function with the desired device type ('cpu', 'gpu', or 'tpu').
 """
 
-from .distribution_utils import get_distribution_scope
+from Corpus2GPT.training_utils.distribution_utils import get_distribution_scope
 
 __all__ = ['get_distribution_scope']

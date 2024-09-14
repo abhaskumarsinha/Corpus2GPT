@@ -11,7 +11,7 @@ Sampling Strategies:
 - sample_random: Implements random sampling strategy for inference.
 """
 
-from inference.inference import *
-from inference.scale_utils import *
+from Corpus2GPT.inference.inference import *
+from Corpus2GPT.inference.scale_utils import *
 
-from inference.sampling_strategies.sample_random import *
+from Corpus2GPT.inference.sampling_strategies.sample_random import *

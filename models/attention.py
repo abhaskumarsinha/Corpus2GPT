@@ -1,10 +1,6 @@
 import keras
 import numpy as np
 
-
-import keras
-import numpy as np
-
 class AttentionTrain(keras.layers.Layer):
     """
     Custom attention layer for training Transformer models.

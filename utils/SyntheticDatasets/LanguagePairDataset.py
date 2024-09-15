@@ -119,7 +119,7 @@ class LanguagePairDataset:
         # Return the sentences as concatenated strings
         return first_sentence, second_sentence, first_sentence
 
-    def write_dataset_to_file(self, map_dict, reverse_dict, max_len, n, file_path, append=True):
+    def write_dataset_to_file(self, map_dict, reverse_dict, max_len, n, file_path, append=True, special_char=None):
         """
         Writes `n` sentence pairs to a file. Each pair contains a sentence in the first language
         and its corresponding translation in the second language.
@@ -130,6 +130,7 @@ class LanguagePairDataset:
         n: Number of sentence pairs to generate.
         file_path: The file path to write the dataset to.
         append: Boolean flag to append to the file if it exists, otherwise overwrite.
+        special_char: Optional character to separate sentence pairs in the file.
         """
         # Open the file in append mode if append=True, otherwise overwrite
         mode = 'a' if append else 'w'
@@ -141,3 +142,35 @@ class LanguagePairDataset:
                 f.write(first_sentence + '\n')
                 # Write the corresponding second language sentence
                 f.write(second_sentence + '\n')
+                # If a special character is provided, write it as a separator
+                if special_char:
+                    f.write(special_char + '\n')
+
+    def test_translation_accuracy(self, map_dict, reverse_dict, first_sentence, translated_sentence):
+        """
+        Tests the translation accuracy by comparing how many words in the translated_sentence
+        match the expected words from the map_dict.
+
+        map_dict: Dictionary mapping words from the first language to the second.
+        reverse_dict: Dictionary mapping words from the second language back to the first language.
+        first_sentence: The sentence in the first language (string of space-separated words).
+        translated_sentence: The translated sentence to be evaluated (string of space-separated words).
+        
+        Returns:
+            The ratio of correctly translated words to total words in the sentence.
+        """
+        first_words = first_sentence.split()
+        translated_words = translated_sentence.split()
+        
+        # Check if sentence lengths match
+        if len(first_words) != len(translated_words):
+            raise ValueError("Both sentences must have the same number of words for accurate comparison.")
+        
+        # Count how many translations are correct
+        correct_count = 0
+        for first_word, translated_word in zip(first_words, translated_words):
+            if map_dict.get(first_word) == translated_word:
+                correct_count += 1
+        
+        # Return the ratio of correct translations
+        return correct_count / len(first_words)

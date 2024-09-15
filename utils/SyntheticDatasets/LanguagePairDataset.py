@@ -119,7 +119,7 @@ class LanguagePairDataset:
         # Return the sentences as concatenated strings
         return first_sentence, second_sentence, first_sentence
 
-    def write_dataset_to_file(self, map_dict, reverse_dict, max_len, n, file_path, append=True, special_char=None):
+    def write_dataset_to_file(self, map_dict, reverse_dict, max_len, n, file_path, append=True, instance_split=None, sentence_split=None):
         """
         Writes `n` sentence pairs to a file. Each pair contains a sentence in the first language
         and its corresponding translation in the second language.
@@ -130,7 +130,8 @@ class LanguagePairDataset:
         n: Number of sentence pairs to generate.
         file_path: The file path to write the dataset to.
         append: Boolean flag to append to the file if it exists, otherwise overwrite.
-        special_char: Optional character to separate sentence pairs in the file.
+        instance_split: Optional character to separate sentence pairs in the file.
+        sentence_split: Optional character to separate two sentences in the file.
         """
         # Open the file in append mode if append=True, otherwise overwrite
         mode = 'a' if append else 'w'
@@ -140,11 +141,14 @@ class LanguagePairDataset:
                 first_sentence, second_sentence, _ = self.create_translate_language_instance(map_dict, reverse_dict, max_len)
                 # Write the first language sentence
                 f.write(first_sentence + '\n')
+                # If a sentence split char is provided, write it as a separator
+                if sentence_split:
+                    f.write(sentence_split + '\n')
                 # Write the corresponding second language sentence
                 f.write(second_sentence + '\n')
                 # If a special character is provided, write it as a separator
-                if special_char:
-                    f.write(special_char + '\n')
+                if instance_split:
+                    f.write(instance_split + '\n')
 
     def test_translation_accuracy(self, map_dict, reverse_dict, first_sentence, translated_sentence):
         """

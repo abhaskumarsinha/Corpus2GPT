@@ -178,3 +178,34 @@ class LanguagePairDataset:
         
         # Return the ratio of correct translations
         return correct_count / len(first_words)
+
+
+    def evaluate_model_accuracy(self, lang_map, reverse_map, sentence_len, inference, generate_limit, last_char_index, num_prompts=1):
+        """
+        Evaluates the model's translation accuracy by generating multiple prompts and testing them.
+
+        Parameters:
+            lang_map (dict): Mapping from the first language to the second language.
+            reverse_map (dict): Reverse mapping from the second language to the first language.
+            sentence_len (int): Maximum sentence length for generating language pairs.
+            inference: Inference model or method to generate outputs.
+            generate_limit (int): Maximum number of characters or tokens to generate.
+            last_char_index (int): Index to slice the generated output to limit the number of characters or tokens.
+            num_prompts (int, optional): Number of (X, Y) language translation pairs to use for generating the prompt. Default is 1.
+
+        Returns:
+            float: Translation accuracy of the model.
+        """
+        X_prompt = ""
+        for _ in range(num_prompts):
+            X, Y, _ = self.create_translate_language_instance(lang_map, reverse_map, sentence_len)
+            X_prompt += X + " . " + Y + " | "
+
+        x_test, y_test, _ = self.create_translate_language_instance(lang_map, reverse_map, sentence_len)
+        X_test = X_prompt + x_test + " ."
+
+        Y_output = inference.generate(X_test, generate_limit, k_value=1)[0 - last_char_index:]
+        accuracy = self.test_translation_accuracy(lang_map, reverse_map, x_test, Y_output)
+        
+        return accuracy
+

@@ -1,4 +1,4 @@
-[[`Corpus2GPT`](https://abhaskumarsinha.github.io/Corpus2GPT/)] [[`Docs`](https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/index.html)] [[`Ragdoll`](https://huggingface.co/spaces/abhaskumarsinha/Ragdoll)] [[`Keras`](https://www.github.com/keras-team/keras/)]
+[[`Corpus2GPT`](https://abhaskumarsinha.github.io/Corpus2GPT/)] [[`Docs`](https://abhaskumarsinha.github.io/Corpus2GPT/docs/doc/index.html)] [[`Ragdoll`](https://huggingface.co/spaces/abhaskumarsinha/Ragdoll)] [[`Keras`](https://www.github.com/keras-team/keras/)] [[`Guide`]([https://www.github.com/keras-team/keras/](https://colab.research.google.com/github/abhaskumarsinha/Corpus2GPT/blob/main/guides/LinePairDatasetExample.ipynb))]
 
 ![Apache 2.0](https://badgen.net/static/license/Apache%202.0/blue) ![Keras 3.1](https://badgen.net/static/Keras/3.1/orange) ![Build: Pass](https://badgen.net/static/build/pass/f2a)
 

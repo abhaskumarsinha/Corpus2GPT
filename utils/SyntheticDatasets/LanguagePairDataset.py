@@ -150,7 +150,7 @@ class LanguagePairDataset:
                 if instance_split:
                     f.write(instance_split + '\n')
 
-    def test_translation_accuracy(self, map_dict, reverse_dict, first_sentence, translated_sentence):
+    def test_translation_accuracy(self, map_dict, reverse_dict, first_sentence, translated_sentence, interrupt_errors = True):
         """
         Tests the translation accuracy by comparing how many words in the translated_sentence
         match the expected words from the map_dict.
@@ -167,7 +167,7 @@ class LanguagePairDataset:
         translated_words = translated_sentence.split()
         
         # Check if sentence lengths match
-        if len(first_words) != len(translated_words):
+        if len(first_words) != len(translated_words) and interrupt_errors:
             raise ValueError("Both sentences must have the same number of words for accurate comparison.")
         
         # Count how many translations are correct
@@ -180,7 +180,7 @@ class LanguagePairDataset:
         return correct_count / len(first_words)
 
 
-    def evaluate_model_accuracy(self, lang_map, reverse_map, sentence_len, inference, generate_limit, last_char_index, num_prompts=1):
+    def evaluate_model_accuracy(self, lang_map, reverse_map, sentence_len, inference, generate_limit, last_char_index, num_prompts=1, interrupt_errors = False):
         """
         Evaluates the model's translation accuracy by generating multiple prompts and testing them.
 
@@ -205,7 +205,7 @@ class LanguagePairDataset:
         X_test = X_prompt + x_test + " ."
 
         Y_output = inference.generate(X_test, generate_limit, k_value=1)[0 - last_char_index:]
-        accuracy = self.test_translation_accuracy(lang_map, reverse_map, x_test, Y_output)
+        accuracy = self.test_translation_accuracy(lang_map, reverse_map, x_test, Y_output, interrupt_errors = interrupt_errors)
         
         return accuracy
 

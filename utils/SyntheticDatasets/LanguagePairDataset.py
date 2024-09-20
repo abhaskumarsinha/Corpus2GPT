@@ -180,7 +180,7 @@ class LanguagePairDataset:
         return correct_count / len(first_words)
 
 
-    def evaluate_model_accuracy(self, lang_map, reverse_map, sentence_len, inference, generate_limit, last_char_index, num_prompts=1, interrupt_errors = False, sentence_separator = '.', instance_separator = '|'):
+    def evaluate_model_accuracy(self, lang_map, reverse_map, sentence_len, inference, generate_limit, last_char_index, num_prompts=1, interrupt_errors = False):
         """
         Evaluates the model's translation accuracy by generating multiple prompts and testing them.
 
@@ -192,8 +192,6 @@ class LanguagePairDataset:
             generate_limit (int): Maximum number of characters or tokens to generate.
             last_char_index (int): Index to slice the generated output to limit the number of characters or tokens.
             num_prompts (int, optional): Number of (X, Y) language translation pairs to use for generating the prompt. Default is 1.
-            sentence_separator (str): The token string reserved to split sentences. Default is ".".
-            instance_separator (str): The token string reserved to split instnces. Default is "|"
 
         Returns:
             float: Translation accuracy of the model.
@@ -201,13 +199,12 @@ class LanguagePairDataset:
         X_prompt = ""
         for _ in range(num_prompts):
             X, Y, _ = self.create_translate_language_instance(lang_map, reverse_map, sentence_len)
-            X_prompt += X + " " + sentence_separator + " " + Y + " " + instance_separator + " "
+            X_prompt += X + " . " + Y + " | "
 
         x_test, y_test, _ = self.create_translate_language_instance(lang_map, reverse_map, sentence_len)
-        X_test = X_prompt + x_test + " " + sentence_separator
+        X_test = X_prompt + x_test + " ."
 
         Y_output = inference.generate(X_test, generate_limit, k_value=1)[0 - last_char_index:]
         accuracy = self.test_translation_accuracy(lang_map, reverse_map, x_test, Y_output, interrupt_errors = interrupt_errors)
         
         return accuracy
-

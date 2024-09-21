@@ -84,7 +84,7 @@ class Generative_inference:
         input_prompt_token_len = len(prompt_tokens)
 
         if len(prompt_tokens) > self.input_len:
-            prompt_tokens = prompt_tokens[:self.input_len]
+            prompt_tokens = prompt_tokens[len(prompt_tokens) - self.input_len : ]
         elif len(prompt_tokens) < self.input_len:
             prompt_tokens = [self.padding_token] * (self.input_len - len(prompt_tokens)) + prompt_tokens
         else:

@@ -123,8 +123,9 @@ def get_distribution_scope(device_type):
             return distribute_scope
 
         elif device_type == "tpu":
-            tpu_address = os.environ.get("TPU_NAME", "")
-            cluster_resolver = tf.distribute.cluster_resolver.TPUClusterResolver(tpu=tpu_address)
+            # tpu_address = os.environ.get("TPU_NAME", "")
+            # cluster_resolver = tf.distribute.cluster_resolver.TPUClusterResolver(tpu=tpu_address)
+            cluster_resolver = tf.distribute.cluster_resolver.TPUClusterResolver()
             tf.config.experimental_connect_to_cluster(cluster_resolver)
             tf.tpu.experimental.initialize_tpu_system(cluster_resolver)
             tpu_strategy = tf.distribute.TPUStrategy(cluster_resolver)
